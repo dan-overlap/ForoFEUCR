@@ -1,3 +1,4 @@
 class News < ApplicationRecord
-  has_one :author
+  has_one :user, :foreing_key => 'author'
+  belongs_to :blog
 end
