@@ -22,19 +22,19 @@
   <tbody>
     <% @presentations.each do |presentation| %>
       <tr>
-        <td><%= presentation.authors %></td>
+        <td><%= presentation.authors_id %></td>
         <td><%= presentation.title %></td>
         <td><%= presentation.abstract %></td>
-        <td><%= presentation.uploader %></td>
+        <td><%= presentation.uploader_id %></td>
         <td><%= presentation.document %></td>
         <td><%= presentation.status %></td>
-        <td><%= presentation.discussion %></td>
-        <td><%= presentation.presenters %></td>
-        <td><%= presentation.likes %></td>
-        <td><%= presentation.dislikes %></td>
+        <td><%= presentation.discussion_id %></td>
+        <td><%= presentation.presenters_id %></td>
+        <td><%= presentation.likes_id %></td>
+        <td><%= presentation.dislikes_id %></td>
         <td><%= link_to 'Show', presentation %></td>
         <td><%= link_to 'Edit', edit_presentation_path(presentation) %></td>
-        <td><%= link_to 'Destroy', presentation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', presentation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   get '/ForoFEUCR/', to: 'congresses#index'
 
-  root 'congresses#index'
+  root 'users#index'
 end
