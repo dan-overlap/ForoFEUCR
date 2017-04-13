@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Authors:</strong>
+  <%= @presentation.authors %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @presentation.title %>
+</p>
+
+<p>
+  <strong>Abstract:</strong>
+  <%= @presentation.abstract %>
+</p>
+
+<p>
+  <strong>Uploader:</strong>
+  <%= @presentation.uploader %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @presentation.document %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @presentation.status %>
+</p>
+
+<p>
+  <strong>Discussion:</strong>
+  <%= @presentation.discussion %>
+</p>
+
+<p>
+  <strong>Presenters:</strong>
+  <%= @presentation.presenters %>
+</p>
+
+<p>
+  <strong>Likes:</strong>
+  <%= @presentation.likes %>
+</p>
+
+<p>
+  <strong>Dislikes:</strong>
+  <%= @presentation.dislikes %>
+</p>
+
+<%= link_to 'Edit', edit_presentation_path(@presentation) %> |
+<%= link_to 'Back', presentations_path %>

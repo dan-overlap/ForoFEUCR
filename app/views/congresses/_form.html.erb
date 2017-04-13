@@ -1,0 +1,52 @@
+<%= form_for(congress) do |f| %>
+  <% if congress.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(congress.errors.count, "error") %> prohibited this congress from being saved:</h2>
+
+      <ul>
+      <% congress.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :organizer %>
+    <%= f.text_field :organizer %>
+  </div>
+
+  <div class="field">
+    <%= f.label :responsible_id %>
+    <%= f.text_field :responsible_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :calendar_id %>
+    <%= f.text_field :calendar_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :blog_id %>
+    <%= f.text_field :blog_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :categories_id %>
+    <%= f.text_field :categories_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :administrators_id %>
+    <%= f.text_field :administrators_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

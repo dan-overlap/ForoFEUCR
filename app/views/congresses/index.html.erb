@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Congresses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Organizer</th>
+      <th>Responsible</th>
+      <th>Calendar</th>
+      <th>Blog</th>
+      <th>Categories</th>
+      <th>Administrators</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @congresses.each do |congress| %>
+      <tr>
+        <td><%= congress.name %></td>
+        <td><%= congress.organizer %></td>
+        <td><%= congress.responsible %></td>
+        <td><%= congress.calendar %></td>
+        <td><%= congress.blog %></td>
+        <td><%= congress.categories %></td>
+        <td><%= congress.administrators %></td>
+        <td><%= link_to 'Show', congress %></td>
+        <td><%= link_to 'Edit', edit_congress_path(congress) %></td>
+        <td><%= link_to 'Destroy', congress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Congress', new_congress_path %>
