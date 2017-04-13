@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @congress.name %>
+</p>
+
+<p>
+  <strong>Organizer:</strong>
+  <%= @congress.organizer %>
+</p>
+
+<p>
+  <strong>Responsible:</strong>
+  <%= @congress.responsible %>
+</p>
+
+<p>
+  <strong>Calendar:</strong>
+  <%= @congress.calendar %>
+</p>
+
+<p>
+  <strong>Blog:</strong>
+  <%= @congress.blog %>
+</p>
+
+<p>
+  <strong>Categories:</strong>
+  <%= @congress.categories %>
+</p>
+
+<p>
+  <strong>Administrators:</strong>
+  <%= @congress.administrators %>
+</p>
+
+<%= link_to 'Edit', edit_congress_path(@congress) %> |
+<%= link_to 'Back', congresses_path %>

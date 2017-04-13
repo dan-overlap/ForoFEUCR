@@ -1,0 +1,8 @@
+rails g scaffold Congress name:string organizer:string responsible:references calendar:references blog:references categories:references administrators:references
+rails g scaffold Presentation authors:references title:string abstract:string uploader:references document:binary status:integer discussion:references presenters:references likes:references dislikes:references
+rails g scaffold Discussion comments:references amount_comments:integer
+rails g scaffold Comment author:references title:string body:text replies:references likes:references dislikes:references is_important:boolean is_inappropriate:boolean reviewed:boolean denounced:boolean
+rails g scaffold User name:string last_name:string userid:string username:string sede:string career:string avatar:binary gender:string phone:string 
+rails g scaffold Blog news:references
+rails g scaffold News title:string image:binary content:text author:references
+rails g scaffold Category name:string description:string presentations:references

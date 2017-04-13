@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @comment.author %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @comment.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @comment.body %>
+</p>
+
+<p>
+  <strong>Replies:</strong>
+  <%= @comment.replies %>
+</p>
+
+<p>
+  <strong>Likes:</strong>
+  <%= @comment.likes %>
+</p>
+
+<p>
+  <strong>Dislikes:</strong>
+  <%= @comment.dislikes %>
+</p>
+
+<p>
+  <strong>Is important:</strong>
+  <%= @comment.is_important %>
+</p>
+
+<p>
+  <strong>Is inappropriate:</strong>
+  <%= @comment.is_inappropriate %>
+</p>
+
+<p>
+  <strong>Reviewed:</strong>
+  <%= @comment.reviewed %>
+</p>
+
+<p>
+  <strong>Denounced:</strong>
+  <%= @comment.denounced %>
+</p>
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>

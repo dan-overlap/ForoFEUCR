@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Presentations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Authors</th>
+      <th>Title</th>
+      <th>Abstract</th>
+      <th>Uploader</th>
+      <th>Document</th>
+      <th>Status</th>
+      <th>Discussion</th>
+      <th>Presenters</th>
+      <th>Likes</th>
+      <th>Dislikes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @presentations.each do |presentation| %>
+      <tr>
+        <td><%= presentation.authors %></td>
+        <td><%= presentation.title %></td>
+        <td><%= presentation.abstract %></td>
+        <td><%= presentation.uploader %></td>
+        <td><%= presentation.document %></td>
+        <td><%= presentation.status %></td>
+        <td><%= presentation.discussion %></td>
+        <td><%= presentation.presenters %></td>
+        <td><%= presentation.likes %></td>
+        <td><%= presentation.dislikes %></td>
+        <td><%= link_to 'Show', presentation %></td>
+        <td><%= link_to 'Edit', edit_presentation_path(presentation) %></td>
+        <td><%= link_to 'Destroy', presentation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Presentation', new_presentation_path %>
