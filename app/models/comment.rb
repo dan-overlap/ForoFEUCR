@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :author
-  belongs_to :replies
-  belongs_to :likes
-  belongs_to :dislikes
+  has_one :author
+  has_many :comments, :foreign_key => 'replies'
+  has_many :users, :foreign_key => 'likes'
+  has_many :users, :foreign_key => 'dislikes'
 end

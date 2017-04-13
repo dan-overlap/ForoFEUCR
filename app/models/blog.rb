@@ -1,3 +1,3 @@
 class Blog < ApplicationRecord
-  belongs_to :news
+  has_many :news
 end

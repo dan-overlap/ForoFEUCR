@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  belongs_to :presentations
+  has_many :presentations
 end
