@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413005423) do
+ActiveRecord::Schema.define(version: 20170413173910) do
 
   create_table "blogs", force: :cascade do |t|
     t.integer  "news_id"
@@ -93,8 +93,12 @@ ActiveRecord::Schema.define(version: 20170413005423) do
     t.integer  "presenters_id"
     t.integer  "likes_id"
     t.integer  "dislikes_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "pdf_file_file_name"
+    t.string   "pdf_file_content_type"
+    t.integer  "pdf_file_file_size"
+    t.datetime "pdf_file_updated_at"
     t.index ["authors_id"], name: "index_presentations_on_authors_id"
     t.index ["discussion_id"], name: "index_presentations_on_discussion_id"
     t.index ["dislikes_id"], name: "index_presentations_on_dislikes_id"

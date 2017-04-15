@@ -10,5 +10,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/ForoFEUCR/', to: 'congresses#index'
+<<<<<<< HEAD
   root 'congresses#index'
+=======
+
+  root 'users#index'
+>>>>>>> 98ee0e2c1930cf5287b49891fdc836f1380bb25c
 end

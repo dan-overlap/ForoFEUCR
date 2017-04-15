@@ -32,8 +32,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :document %>
-    <%= f.text_field :document %>
+    <%= f.label :pdf_document %>
+    <%= f.file_field :pdf_document %>
+    <%= f.submit "Submit" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dislikes_id %>
+    <%= f.text_field :dislikes_id %>
   </div>
 
   <div class="field">
@@ -60,6 +66,7 @@
     <%= f.label :dislikes_id %>
     <%= f.text_field :dislikes_id %>
   </div>
+  
 
   <div class="actions">
     <%= f.submit %>
