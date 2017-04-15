@@ -4,4 +4,5 @@ class Congress < ApplicationRecord
   has_one :blog
   has_many :categories
   has_many :users, :foreign_key => 'administrators'
+  
 end

@@ -2,7 +2,7 @@
 
 <p>
   <strong>Authors:</strong>
-  <%= @presentation.authors %>
+  <%= @presentation.authors_id %>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
 
 <p>
   <strong>Uploader:</strong>
-  <%= @presentation.uploader %>
+  <%= @presentation.uploader_id %>
 </p>
 
 <p>
@@ -32,22 +32,22 @@
 
 <p>
   <strong>Discussion:</strong>
-  <%= @presentation.discussion %>
+  <%= @presentation.discussion_id %>
 </p>
 
 <p>
   <strong>Presenters:</strong>
-  <%= @presentation.presenters %>
+  <%= @presentation.presenters_id %>
 </p>
 
 <p>
   <strong>Likes:</strong>
-  <%= @presentation.likes %>
+  <%= @presentation.likes_id %>
 </p>
 
 <p>
   <strong>Dislikes:</strong>
-  <%= @presentation.dislikes %>
+  <%= @presentation.dislikes_id %>
 </p>
 
 <%= link_to 'Edit', edit_presentation_path(@presentation) %> |

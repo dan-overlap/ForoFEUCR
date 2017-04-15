@@ -5,5 +5,5 @@ class Presentation < ApplicationRecord
   has_many :presenters
   has_many :users, :foreign_key => 'likes'
   has_many :users, :foreign_key => 'dislikes'
-  belongs_to :category
+  #belongs_to :category
 end

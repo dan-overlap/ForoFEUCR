@@ -3,6 +3,7 @@ class CongressesController < ApplicationController
 
   # GET /congresses
   # GET /congresses.json
+
   def index
     @congresses = Congress.all
   end
@@ -15,15 +16,18 @@ class CongressesController < ApplicationController
   # GET /congresses/new
   def new
     @congress = Congress.new
+    @users = User.pluck(:user_id, :id)
   end
 
   # GET /congresses/1/edit
   def edit
+    @users = User.pluck(:user_id, :id)
   end
 
   # POST /congresses
   # POST /congresses.json
   def create
+
     @congress = Congress.new(congress_params)
 
     respond_to do |format|

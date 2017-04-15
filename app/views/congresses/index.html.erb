@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Congresses</h1>
+<h1>Congresses Index</h1>
 
 <table>
   <thead>
@@ -18,12 +18,13 @@
 
   <tbody>
     <% @congresses.each do |congress| %>
-    <% @users = User.where('id=?',congress.responsible_id).references(:user)%>
+    <!--%# @users = User.where('id=?',congress.responsible_id).references(:user)%-->
+    <% @user = User.find(congress.responsible_id)%>
     
       <tr>
         <td><%= congress.name %></td>
         <td><%= congress.organizer %></td>
-        <td><%= @users.first.user_id %></td>
+        <td><%= @user.username %></td>
         <td><%= congress.calendar_id %></td>
         <td><%= congress.blog_id %></td>
         <td><%= congress.categories_id %></td>

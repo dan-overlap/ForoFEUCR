@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :responsible_id %>
-    <%= f.text_field :responsible_id %>
+    <%= f.select :responsible_id , options_for_select(@users), {:include_blank => "   "}, {:required => true}  %>
   </div>
 
   <div class="field">
