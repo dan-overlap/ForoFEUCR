@@ -1,3 +1,3 @@
 class Discussion < ApplicationRecord
-  has_many :comments
+  has_many :comments, optional: true
 end

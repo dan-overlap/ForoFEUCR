@@ -1,3 +1,11 @@
+GIT
+  remote: http://github.com/justinfrench/formtastic.git
+  revision: 85fa0dde7157a84c3aa94a26d97be8dd857b3002
+  branch: 3.1-stable
+  specs:
+    formtastic (3.1.5)
+      actionpack (>= 3.2.13)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -161,6 +169,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.2.0)
   byebug
   coffee-rails (~> 4.2)
+  formtastic!
   jbuilder (~> 2.5)
   jquery-rails
   paperclip

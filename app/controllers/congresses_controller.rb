@@ -16,12 +16,12 @@ class CongressesController < ApplicationController
   # GET /congresses/new
   def new
     @congress = Congress.new
-    @users = User.pluck(:user_id, :id)
+    @users = User.all
   end
 
   # GET /congresses/1/edit
   def edit
-    @users = User.pluck(:user_id, :id)
+    @users = User.all
   end
 
   # POST /congresses

@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :responsible_id %>
-    <%= f.select :responsible_id , options_for_select(@users), {:include_blank => "   "}, {:required => true}  %>
+    <%= f.select :responsible_id , options_from_collection_for_select(@users,'id','user_id'), {:include_blank => "   "}, {:required => true}  %>
   </div>
 
   <div class="field">
@@ -43,7 +43,7 @@
 
   <div class="field">
     <%= f.label :administrators_id %>
-    <%= f.text_field :administrators_id %>
+    <%= f.collection_check_boxes :administrators_id, @users,'id','user_id',{class: 'checkbox inline'} %>
   </div>
 
   <div class="actions">
