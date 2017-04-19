@@ -25,7 +25,6 @@ class PresentationsController < ApplicationController
   # POST /presentations.json
   def create
     @presentation = Presentation.new(presentation_params)
-
     respond_to do |format|
       if @presentation.save
         format.html { redirect_to @presentation, notice: 'Presentation was successfully created.' }
@@ -69,6 +68,6 @@ class PresentationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def presentation_params
-      params.require(:presentation).permit(:authors_id, :title, :abstract, :uploader_id, :document, :status, :discussion_id, :presenters_id, :likes_id, :dislikes_id)
+      params.require(:presentation).permit(:authors_id, :title, :abstract, :uploader_id, :document, :status, :discussion_id, :presenters_id, :likes_id, :dislikes_id, :pdf_file)
     end
 end
