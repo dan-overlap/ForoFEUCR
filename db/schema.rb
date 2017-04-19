@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413173910) do
+ActiveRecord::Schema.define(version: 20170419032401) do
+
+  create_table "administrations", force: :cascade do |t|
+    t.integer  "congress_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["congress_id"], name: "index_administrations_on_congress_id"
+    t.index ["user_id"], name: "index_administrations_on_user_id"
+  end
 
   create_table "blogs", force: :cascade do |t|
     t.integer  "news_id"

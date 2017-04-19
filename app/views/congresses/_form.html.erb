@@ -42,8 +42,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :administrators_id %>
-    <%= f.collection_check_boxes :administrators_id, @users,'id','user_id',{class: 'checkbox inline'} %>
+    <%= f.label :administrator_ids %>
+    <%= f.collection_check_boxes :administrator_ids, @users,'id','user_id',{multiple: true, class: 'checkbox inline'} %>
   </div>
 
   <div class="actions">

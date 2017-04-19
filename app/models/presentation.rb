@@ -3,8 +3,8 @@ class Presentation < ApplicationRecord
   has_one :user, :foreign_key => 'uploader'
   has_one :discussion
   has_many :presenters
-  has_many :users, :foreign_key => 'likes', optional: true
-  has_many :users, :foreign_key => 'dislikes', optional: true
+  has_many :users, :foreign_key => 'likes'
+  has_many :users, :foreign_key => 'dislikes'
 
   #attr_accessible :pdf_file
   has_attached_file :pdf_file

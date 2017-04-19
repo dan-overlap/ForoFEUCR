@@ -1,8 +1,10 @@
 class Congress < ApplicationRecord
+  has_many :administrations
   has_one :user, :foreign_key => 'responsible'
   #has_one :calendar
   has_one :blog
   has_many :categories
-  has_many :users, :foreign_key => 'administrators'
+  has_many :administrators, :through => :administrations, source: :user
   
+
 end

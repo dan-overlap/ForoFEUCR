@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-	belongs_to :comment, optional: true
-	belongs_to :presentation, optional: true
-	belongs_to :congress, optional: true
+	has_many :adminstrations
+	belongs_to :comment
+	belongs_to :presentation
+	has_many :users, :through => :administrations
 end
