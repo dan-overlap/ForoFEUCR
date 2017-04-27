@@ -4,15 +4,24 @@
     <title>ForoFEUCR</title>
     <%= csrf_meta_tags %>
 
-   	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 <!--
 
  -->
+
+
   </head>
 
   <body>
+    
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if !user_signed_in? %>
+    	<%= link_to "Registrarse", new_user_registration_path %>
+    	<%= link_to "Iniciar sesión", new_user_session_path %>
+    <%else%>
+    	<%= link_to "Cerrar sesión",  destroy_user_session_path, :method => :delete %>
+    <%end%>
     <%= yield %>
   </body>
 </html>
