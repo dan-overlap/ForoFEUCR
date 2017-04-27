@@ -17,7 +17,13 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @news.author %>
+  <%= @news.author_id %>
+</p>
+
+
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag @news.picture %>
 </p>
 
 <%= link_to 'Edit', edit_news_path(@news) %> |
