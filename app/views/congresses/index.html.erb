@@ -1,8 +1,8 @@
 <h1>Congresses Index</h1>
 
-<table>
+<table class="table">
   <thead>
-    <tr>
+    <tr scope="row">
       <th>Name</th>
       <th>Organizer</th>
       <th>Responsible</th>
@@ -10,7 +10,7 @@
       <th>Blog</th>
       <th>Categories</th>
       <th>Administrators</th>
-      <th colspan="6"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -19,7 +19,7 @@
     <!--%# @users = User.where('id=?',congress.responsible_id).references(:user)%-->
     <% @user = User.find(congress.responsible_id)%>
     
-      <tr>
+      <tr scope="row">
         <td><%= congress.name %></td>
         <td><%= congress.organizer %></td>
         <td><%= @user.username %></td>
@@ -27,9 +27,9 @@
         <td><%= congress.blog_id %></td>
         <td><%= congress.categories_id %></td>
         <td><%= congress.administrator_ids %></td>
-        <td><%= link_to 'Show', congress %></td>
-        <td><%= link_to 'Edit', edit_congress_path(congress) %></td>
-        <td><%= link_to 'Destroy', congress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ir a', congress, class: 'btn btn-info' %></td>
+        <td><%= link_to 'Editar', edit_congress_path(congress), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Eliminar', congress, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
      
     <% end %>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Congress', new_congress_path, class: 'btn btn-success' %>
+<%= link_to 'Crear Congreso', new_congress_path, class: 'btn btn-default' %>
