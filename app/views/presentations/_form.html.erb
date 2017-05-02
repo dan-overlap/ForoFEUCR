@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :authors_id %>
-    <%= f.text_field :authors_id %>
+    <%= f.label :author_ids %>
+    <%= f.collection_check_boxes :author_ids, @users,'id','user_id',{multiple: true, class: 'checkbox inline'} %>
   </div>
 
   <div class="field">
@@ -26,10 +26,7 @@
     <%= f.text_field :abstract %>
   </div>
 
-  <div class="field">
-    <%= f.label :uploader_id %>
-    <%= f.text_field :uploader_id %>
-  </div>
+
 
   <div class="field">
     <%= f.label :pdf_file %>
@@ -53,8 +50,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :presenters_id %>
-    <%= f.text_field :presenters_id %>
+    <%= f.label :presenter_ids %>
+    <%= f.collection_check_boxes :presenter_ids, @users,'id','user_id',{multiple: true, class: 'checkbox inline'} %>
   </div>
 
   <div class="field">

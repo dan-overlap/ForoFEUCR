@@ -1,6 +1,6 @@
 class PresentationsController < ApplicationController
   before_action :set_presentation, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /presentations
   # GET /presentations.json
   def index
@@ -15,16 +15,19 @@ class PresentationsController < ApplicationController
   # GET /presentations/new
   def new
     @presentation = Presentation.new
+    @users = User.all
   end
 
   # GET /presentations/1/edit
   def edit
+    @users = User.all
   end
 
   # POST /presentations
   # POST /presentations.json
   def create
     @presentation = Presentation.new(presentation_params)
+    @presentation.uploader_id = current_user.id
     respond_to do |format|
       if @presentation.save
         format.html { redirect_to @presentation, notice: 'Presentation was successfully created.' }
@@ -68,6 +71,6 @@ class PresentationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def presentation_params
-      params.require(:presentation).permit(:authors_id, :title, :abstract, :uploader_id, :document, :status, :discussion_id, :presenters_id, :likes_id, :dislikes_id, :pdf_file)
+      params.require(:presentation).permit(:title,:uploader, :abstract, :document, :status, :discussion_id, :likes_id, :dislikes_id, :pdf_file, {:author_ids => []}, {:presenter_ids => []})
     end
 end
