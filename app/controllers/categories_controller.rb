@@ -1,8 +1,14 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_congress
+  layout "insideapplication"
   # GET /categories
   # GET /categories.json
+
+  def set_congress
+    @congress = Congress.find(params[:congress_id])
+  end
+  
   def index
     @categories = Category.all
   end
@@ -25,10 +31,10 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-
+    @category.congress = @congress
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.html { redirect_to [@category.congress, @category], notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }

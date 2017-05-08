@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Authors:</strong>
+  <strong>Autor(es):</strong>
   <%= @presentation.author_ids %>
 </p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Título:</strong>
   <%= @presentation.title %>
 </p>
 
@@ -50,5 +50,5 @@
   <%= @presentation.dislikes_id %>
 </p>
 
-<%= link_to 'Edit', edit_presentation_path(@presentation) %> |
-<%= link_to 'Back', presentations_path %>
+<%= link_to 'Edit', edit_congress_category_presentation_path(@presentation) %> |
+<%= link_to 'Back', congress_category_presentations_path %>

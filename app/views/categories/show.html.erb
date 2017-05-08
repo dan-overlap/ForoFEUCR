@@ -1,19 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @category.name %>
-</p>
+</h1>
 
 <p>
-  <strong>Description:</strong>
   <%= @category.description %>
 </p>
+<%= link_to 'Agregar Ponencia', new_congress_category_presentation_path(params[:congress_id], @category), class: "btn btn-info" %>
+</br></br>
+<% if @category.presentations.any? %>
+	<table class= "table">
+  		<thead>
+   			<tr class = "column">
+      			<th>Título</th>
+      			<th>Estado</th>
+      			<th>Likes</th>
+      			<th>Dislikes</th>
+      			<th colspan="3"></th>
+    		</tr>
+  		</thead>
 
-<p>
-  <strong>Presentations:</strong>
-  <%= @category.presentations %>
-</p>
+    	<tbody>
+    		<% @category.presentations.each do |presentation| %>
+      		<tr>
+        		<td><%= presentation.title %></td>
+        		<td><%= presentation.status %></td>
+        		<td><%= presentation.likes_id %></td>
+        		<td><%= presentation.dislikes_id %></td>
+        		<td><%= link_to 'Ir a', congress_category_presentation_path(@congress, @category, presentation), class: "btn btn-info" %></td>
+        		<td><%= link_to 'Editar', edit_congress_category_presentation_path(@congress, @category, presentation), class: "btn btn-info" %></td>
+        		<td><%= button_to 'Eliminar', congress_category_presentation_path(@congress, @category, presentation), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+      		</tr>
+    		<% end %>
+  		</tbody>
+	</table>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+	
+<%else%>
+	<strong>Aún no se han agregado ponencias a esta categoría</strong>
+	</br></br></br>
+<%end%>
+
+<%= link_to 'Editar', edit_congress_category_path(params[:congress_id], @category), class: "btn btn-info" %> |
+<%= link_to 'Volver', congress_categories_path, class: "btn btn-info" %>

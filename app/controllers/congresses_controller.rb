@@ -1,4 +1,5 @@
 class CongressesController < ApplicationController
+
   before_action :set_congress, only: [:show, :edit, :update, :destroy]
 
   # GET /congresses
@@ -6,11 +7,17 @@ class CongressesController < ApplicationController
 
   def index
     @congresses = Congress.all
+    render layout: 'showLayout'
+  end
+
+  def category_path
+    congress_category_path
   end
 
   # GET /congresses/1
   # GET /congresses/1.json
   def show
+   render layout: 'showLayout'
   end
 
   # GET /congresses/new

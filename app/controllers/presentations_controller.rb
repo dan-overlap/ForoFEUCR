@@ -1,6 +1,8 @@
 class PresentationsController < ApplicationController
   before_action :set_presentation, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_congress, :set_category, :set_users
+  layout "insideapplication"
   # GET /presentations
   # GET /presentations.json
   def index
@@ -15,22 +17,21 @@ class PresentationsController < ApplicationController
   # GET /presentations/new
   def new
     @presentation = Presentation.new
-    @users = User.all
   end
 
   # GET /presentations/1/edit
   def edit
-    @users = User.all
   end
 
   # POST /presentations
   # POST /presentations.json
   def create
     @presentation = Presentation.new(presentation_params)
+    @presentation.category = @category
     @presentation.uploader_id = current_user.id
     respond_to do |format|
       if @presentation.save
-        format.html { redirect_to @presentation, notice: 'Presentation was successfully created.' }
+        format.html { redirect_to [@congress, @category , @presentation], notice: 'Presentation was successfully created.' }
         format.json { render :show, status: :created, location: @presentation }
       else
         format.html { render :new }
@@ -44,7 +45,7 @@ class PresentationsController < ApplicationController
   def update
     respond_to do |format|
       if @presentation.update(presentation_params)
-        format.html { redirect_to @presentation, notice: 'Presentation was successfully updated.' }
+        format.html { redirect_to [@presentation.category.congress, @presentation], notice: 'Presentation was successfully updated.' }
         format.json { render :show, status: :ok, location: @presentation }
       else
         format.html { render :edit }
@@ -58,7 +59,7 @@ class PresentationsController < ApplicationController
   def destroy
     @presentation.destroy
     respond_to do |format|
-      format.html { redirect_to presentations_url, notice: 'Presentation was successfully destroyed.' }
+      format.html { redirect_to congress_category_presentations_url, notice: 'Presentation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,6 +68,18 @@ class PresentationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_presentation
       @presentation = Presentation.find(params[:id])
+    end
+
+    def set_category
+      @category = Category.find(params[:category_id])
+    end
+
+    def set_congress
+      @congress = Congress.find(params[:congress_id])
+    end
+
+    def set_users
+      @users = User.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

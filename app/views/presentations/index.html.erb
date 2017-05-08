@@ -20,7 +20,7 @@
   </thead>
 
   <tbody>
-    <% @presentations.each do |presentation| %>
+    <% Category.find(params[:category_id]).presentations.each do |presentation| %>
       <tr>
         <td><%= presentation.authors_id %></td>
         <td><%= presentation.title %></td>
@@ -32,9 +32,9 @@
         <td><%= presentation.presenters_id %></td>
         <td><%= presentation.likes_id %></td>
         <td><%= presentation.dislikes_id %></td>
-        <td><%= link_to 'Show', presentation %></td>
-        <td><%= link_to 'Edit', edit_presentation_path(presentation) %></td>
-        <td><%= button_to 'Destroy', presentation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', congress_category_presentation_path(@congress, @category, presentation) %></td>
+        <td><%= link_to 'Edit', edit_congress_category_presentation_path(@congress, @category, presentation) %></td>
+        <td><%= button_to 'Destroy', congress_category_presentation_path(@congress, @category, presentation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Presentation', new_presentation_path %>
+<%= link_to 'New Presentation', new_congress_category_presentation_path %>

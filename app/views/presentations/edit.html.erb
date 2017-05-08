@@ -5,5 +5,5 @@
 	<% user = User.find(@presentation.uploader_id.to_i)%>
     <B><I><%= ("Subido por " + user.username) %> </I></B>
 </div>
-<%= link_to 'Show', @presentation %> 
-<%= link_to 'Back', presentations_path %>
+<%= link_to 'Ir a', @presentation %> 
+<%= link_to 'Volver', congress_category_presentations_path, class: "btn btn-info" %>

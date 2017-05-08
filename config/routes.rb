@@ -2,13 +2,17 @@ Rails.application.routes.draw do
   
   
   devise_for :users, :controllers => {:registrations => "users/registrations"}
-  resources :presentations
-  resources :categories
-  resources :news
-  resources :blogs
+  resources :congresses do
+    resources :categories do
+      resources :presentations
+    end
+     resources :news
+  end    
+  
+ 
   resources :comments
   resources :discussions
-  resources :congresses  
+   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

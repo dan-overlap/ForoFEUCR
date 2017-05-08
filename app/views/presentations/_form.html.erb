@@ -1,4 +1,4 @@
-<%= form_for(presentation) do |f| %>
+<%= form_for [@congress, @category, @presentation] do |f| %>
   <% if presentation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(presentation.errors.count, "error") %> prohibited this presentation from being saved:</h2>
@@ -12,58 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :author_ids %>
+    <%= f.label "Selección de autores:" %>
     <%= f.collection_check_boxes :author_ids, @users,'id','user_id',{multiple: true, class: 'checkbox inline'} %>
   </div>
 
   <div class="field">
-    <%= f.label :title %>
+    <%= f.label "Título" %>
     <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= f.label :abstract %>
-    <%= f.text_field :abstract %>
+    <% f.label :abstract %>
+    <% f.text_field :abstract %>
   </div>
 
 
 
   <div class="field">
-    <%= f.label :pdf_file %>
+    <%= f.label "Seleccione el documento (PDF)" %>
     <%= f.file_field :pdf_file %>
     
-  </div>
-
-  <div class="field">
-    <%= f.label :dislikes_id %>
-    <%= f.text_field :dislikes_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :status %>
-    <%= f.number_field :status %>
-  </div>
-
-  <div class="field">
-    <%= f.label :discussion_id %>
-    <%= f.text_field :discussion_id %>
   </div>
 
   <div class="field">
     <%= f.label :presenter_ids %>
     <%= f.collection_check_boxes :presenter_ids, @users,'id','user_id',{multiple: true, class: 'checkbox inline'} %>
   </div>
-
-  <div class="field">
-    <%= f.label :likes_id %>
-    <%= f.text_field :likes_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :dislikes_id %>
-    <%= f.text_field :dislikes_id %>
-  </div>
-  
 
   <div class="actions">
     <%= f.submit %>
