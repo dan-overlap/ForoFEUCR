@@ -26,5 +26,5 @@
   <%= image_tag @news.picture %>
 </p>
 
-<%= link_to 'Edit', edit_news_path(@news) %> |
-<%= link_to 'Back', news_index_path %>
+<%= link_to 'Editar', edit_congress_news_path(@news), class: "btn btn-info" %> |
+<%= link_to 'Volver', congress_path(params[:congress_id]), class: "btn btn-info"  %>

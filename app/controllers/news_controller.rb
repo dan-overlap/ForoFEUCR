@@ -1,6 +1,7 @@
 class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_congress
+  layout "insideapplication"
   # GET /news
   # GET /news.json
   def index
@@ -25,10 +26,10 @@ class NewsController < ApplicationController
   # POST /news.json
   def create
     @news = News.new(news_params)
-
+    @news.congress = @congress
     respond_to do |format|
       if @news.save
-        format.html { redirect_to @news, notice: 'News was successfully created.' }
+        format.html { redirect_to [@news.congress, @news], notice: 'News was successfully created.' }
         format.json { render :show, status: :created, location: @news }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class NewsController < ApplicationController
   def update
     respond_to do |format|
       if @news.update(news_params)
-        format.html { redirect_to @news, notice: 'News was successfully updated.' }
+        format.html { redirect_to [@news.congress, @news], notice: 'News was successfully updated.' }
         format.json { render :show, status: :ok, location: @news }
       else
         format.html { render :edit }
@@ -63,6 +64,11 @@ class NewsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def set_congress
+      @congress = Congress.find(params[:congress_id])
+    end
+
     def set_news
       @news = News.find(params[:id])
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508044614) do
+ActiveRecord::Schema.define(version: 20170508222200) do
 
   create_table "administrations", force: :cascade do |t|
     t.integer  "congress_id"
@@ -108,7 +108,9 @@ ActiveRecord::Schema.define(version: 20170508044614) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "congress_id"
     t.index ["author_id"], name: "index_news_on_author_id"
+    t.index ["congress_id"], name: "index_news_on_congress_id"
   end
 
   create_table "presentations", force: :cascade do |t|

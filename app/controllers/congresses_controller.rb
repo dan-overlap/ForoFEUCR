@@ -1,5 +1,4 @@
 class CongressesController < ApplicationController
-
   before_action :set_congress, only: [:show, :edit, :update, :destroy]
 
   # GET /congresses
