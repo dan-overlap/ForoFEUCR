@@ -1,56 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Autor(es):</strong>
-  <%= @presentation.author_ids %>
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+          <iframe src=<%=@presentation.pdf_file.to_s %> style="width:718px; height:700px;" frameborder="0"></iframe>
+        </div>
+    </div>
+</div>
 
-<p>
-  <strong>Título:</strong>
-  <%= @presentation.title %>
-</p>
-
-<p>
-  <strong>Abstract:</strong>
-  <%= @presentation.abstract %>
-</p>
-
-<p>
-  <strong>Uploader:</strong>
-  <%= @presentation.uploader_id %>
-</p>
-
-<p>
-  <strong>Document:</strong>
-  <%= @presentation.document %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @presentation.status %>
-</p>
-
-<p>
-  <strong>Discussion:</strong>
-  <%= @presentation.discussion_id %>
-</p>
-
-<p>
-  <strong>Presenters:</strong>
-  <%= @presentation.presenter_ids %>
-</p>
-
-<p>
-  <strong>Likes:</strong>
-  <%= @presentation.likes_id %>
-</p>
-
-<p>
-  <strong>Dislikes:</strong>
-  <%= @presentation.dislikes_id %>
-</p>
-
-<iframe src=<%=@presentation.pdf_file.to_s %> style="width:718px; height:700px;" frameborder="0"></iframe>
 
 <%= link_to 'Edit', edit_congress_category_presentation_path(@presentation) %> |
 <%= link_to 'Back', congress_category_presentations_path %>
