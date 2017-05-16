@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_congress, :set_category, :set_presentation
   # GET /comments
   # GET /comments.json
   def index
@@ -26,9 +26,10 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.author_id = current_user.id
+    @comment.presentation = @presentation
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to  [@congress, @category, @presentation], notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -42,7 +43,8 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        @comment.presentation = @presentation
+        format.html { redirect_to [@congress, @category, @presentation, @comment], notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -67,8 +69,20 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
     end
 
+    def set_category
+      @category = Category.find(params[:category_id])
+    end
+
+    def set_congress
+      @congress = Congress.find(params[:congress_id])
+    end
+
+    def set_presentation
+      @presentation = Presentation.find(params[:presentation_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:author_id, :title, :body, :replies_id, :likes_id, :dislikes_id, :is_important, :is_inappropriate, :reviewed, :denounced)
+      params.require(:comment).permit(:title, :body)
     end
 end
