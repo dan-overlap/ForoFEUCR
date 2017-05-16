@@ -6,7 +6,6 @@ class CongressesController < ApplicationController
 
   def index
     @congresses = Congress.all
-    render layout: 'showLayout'
   end
 
   def category_path
@@ -16,7 +15,7 @@ class CongressesController < ApplicationController
   # GET /congresses/1
   # GET /congresses/1.json
   def show
-   render layout: 'showLayout'
+   render layout: 'insideapplication'
   end
 
   # GET /congresses/new
