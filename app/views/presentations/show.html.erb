@@ -50,5 +50,7 @@
   <%= @presentation.dislikes_id %>
 </p>
 
+<iframe src=<%=@presentation.pdf_file.to_s %> style="width:718px; height:700px;" frameborder="0"></iframe>
+
 <%= link_to 'Edit', edit_congress_category_presentation_path(@presentation) %> |
 <%= link_to 'Back', congress_category_presentations_path %>
