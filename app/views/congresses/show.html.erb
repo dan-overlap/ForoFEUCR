@@ -74,10 +74,17 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-6">
+
+            </br>
+  
+            <h2>Pizarra informativa  <%= link_to new_congress_news_path(Congress.find(params[:id])), {class: "btn btn-info"} do %> 
+                <i class="glyphicon glyphicon-plus"></i> Agregar
+               <%end%>
+            </h2>
           </br>
-          <%= link_to 'Agregar Noticia', new_congress_news_path(Congress.find(params[:id])), class: "btn btn-info" %>
           <% if @congress.news.any? %>
             <% @congress.news.reverse.each do |news|%>
+
               </br>
               
                 <div class="panel panel-default">
@@ -126,10 +133,18 @@
 
         </div>
         <div class="col-xs-6">
-            TWO
+
+            </br>
+  
+            <h2>Próximos eventos  <%= link_to new_congress_news_path(Congress.find(params[:id])), {class: "btn btn-info"} do %> 
+                <i class="glyphicon glyphicon-plus"></i> Agregar
+               <%end%>
+            </h2>
+
+            </br>
+
         </div>
     </div>
 </div>
 </br>
-<%= link_to 'Editar', edit_congress_path(@congress) %> |
-<%= link_to 'Volver', congresses_path %>
+
