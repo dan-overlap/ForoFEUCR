@@ -2,8 +2,30 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-6">
-          <iframe src=<%=@presentation.pdf_file.to_s %> style="width:718px; height:700px;" frameborder="0"></iframe>
+        <div class="col-xs-9">
+          <iframe src=<%=@presentation.pdf_file.to_s %> style="width:100%; height:700px;" frameborder="0"></iframe>
+        </div>
+         <div class="col-xs-3">
+          <h2><%="Foro de discusion"%></h2>
+      		<% if @presentation.comments.any? %>
+      			<% @presentation.comments.reverse.each do |comment|%>
+
+      				<div class="media">
+			    		<div class="media-left">
+			      			<img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:45px">
+			    		</div>
+			    		<div class="media-body">
+			      			<h4 class="media-heading"><%=User.find(1).username%> <small><i>Publicado: <%=comment.created_at %></i></small></h4>
+			      			<p><%=comment.body%></p>
+			      		</div>
+
+      			<%end%>
+
+      		<%end%>
+	          
+
+
+          
         </div>
     </div>
 </div>

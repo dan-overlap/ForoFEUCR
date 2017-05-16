@@ -22,12 +22,12 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.author %></td>
+        <td><%= comment.author_id %></td>
         <td><%= comment.title %></td>
         <td><%= comment.body %></td>
-        <td><%= comment.replies %></td>
-        <td><%= comment.likes %></td>
-        <td><%= comment.dislikes %></td>
+        <td><%= comment.replies_id %></td>
+        <td><%= comment.likes_id %></td>
+        <td><%= comment.dislikes_id %></td>
         <td><%= comment.is_important %></td>
         <td><%= comment.is_inappropriate %></td>
         <td><%= comment.reviewed %></td>

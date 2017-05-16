@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508222200) do
+ActiveRecord::Schema.define(version: 20170516060931) do
 
   create_table "administrations", force: :cascade do |t|
     t.integer  "congress_id"
@@ -59,9 +59,11 @@ ActiveRecord::Schema.define(version: 20170508222200) do
     t.boolean  "denounced"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "presentation_id"
     t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["dislikes_id"], name: "index_comments_on_dislikes_id"
     t.index ["likes_id"], name: "index_comments_on_likes_id"
+    t.index ["presentation_id"], name: "index_comments_on_presentation_id"
     t.index ["replies_id"], name: "index_comments_on_replies_id"
   end
 

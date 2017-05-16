@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "users/registrations"}
   resources :congresses do
     resources :categories do
-      resources :presentations
+      resources :presentations do
+        resources :comments
+      end
     end
      resources :news
   end    
