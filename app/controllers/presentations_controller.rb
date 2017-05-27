@@ -45,7 +45,7 @@ class PresentationsController < ApplicationController
   def update
     respond_to do |format|
       if @presentation.update(presentation_params)
-        format.html { redirect_to [@presentation.category.congress, @presentation], notice: 'Presentation was successfully updated.' }
+        format.html { redirect_to [@congress, @category , @presentation], notice: 'Presentation was successfully updated.' }
         format.json { render :show, status: :ok, location: @presentation }
       else
         format.html { render :edit }

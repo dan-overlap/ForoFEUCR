@@ -21,7 +21,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-script-source', '1.8.0'
-
+gem 'font-awesome-sass', '~> 4.7.0'
 gem "therubyracer", ">= 0.11.0", :group => :assets, :platform => :ruby, :require => "v8"
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes

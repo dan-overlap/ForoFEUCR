@@ -1,51 +1,78 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
-  <head>
-    <title><%= Congress.find(@congress).name %></title>
-    <%= csrf_meta_tags %>
-    
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<head>
+	<title><%= Congress.find(@congress).name %></title>
+	<%= csrf_meta_tags %>
 
-<!--
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
- -->
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"><%= Congress.find(@congress).name %></a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Inicio</a></li>
+				<li><%= link_to "Ponencias", congress_categories_path(@congress) %></li>
+				<li><a href="#">Proximos eventos</a></li>
+				<li><a href="#">Noticias</a></li>
+			</ul>
+			<ul class="nav navbar-nav pull-right">
+				<% if !user_signed_in? %>
+				<li><%= link_to "Registrarse", new_user_registration_path, class: "pull-right" %></li>
+				<li><%= link_to "Iniciar sesión", new_user_session_path %></li>
+				<%else%>
+				<li><%= link_to "Cerrar sesión",  destroy_user_session_path, :method => :delete %></li>
+				<%end%>
+			</ul>
+		</div>
+	</nav>
+
+	<div id="main-container" class="container">
+
+		<p class="notice"><%= notice %></p>
+		<p class="alert" ><%= alert %></p>
+
+	</div> 
+	<%= yield %>
+
+</body>
+
+<div id="footer" class="footer-distributed footer navbar-bottom">
+
+	<div class="footer-right">
+
+		<a href="#"><i class="fa fa-facebook-square"></i></a>
+		<a href="#"><i class="fa fa-twitter"></i></a>
+		<a href="#"><i class="fa fa-linkedin"></i></a>
+		<a href="#"><i class="fa fa-github"></i></a>
+
+	</div>
+
+	<div class="footer-left">
+
+		<p class="footer-links">
+			<a href=<%= congress_path(@congress) %>>Inicio</a>
+			·
+			<a href="#">Ponencias</a>
+			·
+			<a href="#">Próximos eventos</a>
+			·
+			<a href="#">Descargas</a>
+			·
+			<a href="http://www.ucr.ac.cr">UCR</a>
+		</p>
+
+		<p><%=@congress.name%> &copy; <%= Time.current.year %></p>
+	</div>
+
+</div>
 
 
-  </head>
-
-  <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#"><%= Congress.find(@congress).name %></a>
-        </div>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Inicio</a></li>
-            <li><%= link_to "Ponencias", congress_categories_path(@congress) %></li>
-            <li><a href="#">Proximos eventos</a></li>
-            <li><a href="#">Noticias</a></li>
-            </ul>
-            <ul class="nav navbar-nav pull-right">
-            <% if !user_signed_in? %>
-              <li><%= link_to "Registrarse", new_user_registration_path, class: "pull-right" %></li>
-              <li><%= link_to "Iniciar sesión", new_user_session_path %></li>
-            <%else%>
-              <li><%= link_to "Cerrar sesión",  destroy_user_session_path, :method => :delete %></li>
-            <%end%>
-          </ul>
-        </div>
-    </nav>
-
-    <div id="main-container" class="container">
-    
-      <p class="notice"><%= notice %></p>
-      <p class="alert" ><%= alert %></p>
-      <h1><%= Congress.find(@congress).name %></h1>
-      <div class="row">
-       
-    <%= yield %>
-  </body>
 </html>

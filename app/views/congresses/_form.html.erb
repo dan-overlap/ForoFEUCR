@@ -11,42 +11,48 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="container">
+
+  <div class="col-xs-6">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="col-xs-6">
     <%= f.label :organizer %>
     <%= f.text_field :organizer %>
   </div>
 
-  <div class="field">
+  <div class="col-xs-6">
     <%= f.label :responsible_id %>
     <%= f.select :responsible_id , options_from_collection_for_select(@users,'id','user_id'), {:include_blank => "   "}, {:required => true}  %>
   </div>
 
-  <div class="field">
+  <div class="col-xs-6">
     <%= f.label :calendar_id %>
     <%= f.text_field :calendar_id %>
   </div>
 
-  <div class="field">
+  <div class="col-xs-6">
     <%= f.label :blog_id %>
     <%= f.text_field :blog_id %>
   </div>
 
-  <div class="field">
+  <div class="col-xs-6">
     <%= f.label :categories_id %>
     <%= f.text_field :categories_id %>
   </div>
 
-  <div class="field">
+  <div class="col-xs-6">
     <%= f.label :administrator_ids %>
-    <%= f.collection_check_boxes :administrator_ids, @users,'id','user_id',{multiple: true, class: 'checkbox inline'} %>
+    <%= f.collection_check_boxes :administrator_ids, @users,'id','user_id',{multiple: true, class: 'checkbox-inline'} %>
+  </div>
+
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
+
+
 <% end %>

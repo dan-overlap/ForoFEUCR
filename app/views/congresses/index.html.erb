@@ -1,15 +1,14 @@
-<h1>Congresses Index</h1>
+<h1>Lista de Congresos</h1>
 
 <table class="table">
   <thead>
     <tr scope="row">
-      <th>Name</th>
-      <th>Organizer</th>
-      <th>Responsible</th>
-      <th>Calendar</th>
-      <th>Blog</th>
-      <th>Categories</th>
-      <th>Administrators</th>
+      <th>Nombre</th>
+      <th>Organizador</th>
+      <th>Responsable</th>
+      <th>Categorias</th>
+      <th>Ponencias</th>
+      <th>Administradores</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -23,9 +22,14 @@
         <td><%= congress.name %></td>
         <td><%= congress.organizer %></td>
         <td><%= @user.username %></td>
-        <td><%= congress.calendar_id %></td>
-        <td><%= congress.blog_id %></td>
-        <td><%= congress.categories_id %></td>
+        <td><%= congress.categories.count %></td>
+        <% presentations = 0 %>
+        <% if congress.categories.any? %>
+          <% congress.categories.each do |category| %>
+            <% presentations += category.presentations.count %>
+          <% end %>
+        <% end %>
+        <td><%= presentations %></td>
         <td><%= congress.administrator_ids %></td>
         <td><%= link_to 'Ir a', congress, class: 'btn btn-info' %></td>
         <td><%= link_to 'Editar', edit_congress_path(congress), class: 'btn btn-info' %></td>
