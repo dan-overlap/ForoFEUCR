@@ -2,37 +2,48 @@
 
 
 
-    <div class="container">
-      
-      <h1>Categorías de ponencias</h1>
-      <p>Los temas a tratar en el congreso se dividen en las siguientes categorías:</p>
-      </br>
-      <% first_of_row = true %>
-      <% Congress.find(params[:congress_id]).categories.each do |category| %>
-          <% if first_of_row %>
-            <div class = "row text-center align-center">
-          <% end %>
-          <a href=<%=congress_category_path(params[:congress_id], category) %>>
-            <div class="square bg-info text-center align-center">
-              <div class="sq-content">
-                <div class="sq-table">
-                  <div class="sq-table-cell">
-                    <h2><%= category.name %></h2>
-                    </br>
-                    <p>Ponencias activas:<%= category.presentations.count %></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <% if first_of_row %>
-            <% first_of_row = false %>
-          <% else %>
-            </div>
-            <% first_of_row = true %>
-          <%end%>
-    <% end %>
-    </div>
-<br>
+<div class="container">
 
-<%= link_to 'Agregar categoría', new_congress_category_path, class: "btn btn-info" %>
+  <h1 class="display-1">Categorías de ponencias</h1>
+  <p>  Los temas a tratar en el congreso se dividen en las siguientes categorías:</p>
+</br>
+
+<% first_of_row = true %>
+<% cont = 0 %>
+<% Congress.find(params[:congress_id]).categories.each do |category| %>
+<% if first_of_row %>
+<p></p>
+<div class = "row text-center align-center">
+  <% end %>
+  <a href=<%=congress_category_path(params[:congress_id], category) %>>
+    <div class="square text-center align-center" style ='background-color: <%= @colors[cont] %>; color:white;'>
+      <div class="sq-content">
+        <div class="sq-table">
+          <div class="sq-table-cell">
+            <h2><%= category.name %></h2>
+          </br>
+          <p>Ponencias activas:<%= category.presentations.count %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
+<% if cont == 3 %>
+  <% cont = 0 %>
+<% else %>
+  <% cont = cont+1 %>
+<%end%>  
+<% if first_of_row %>
+<% first_of_row = false %>
+<% else %>
+</div>
+<% first_of_row = true %>
+<%end%>
+<% end %>
+<div class="row">
+  <div class="col-md-3 pull-right">
+    <%= link_to 'Agregar categoría', new_congress_category_path, class: "btn btn-info" %>
+  </div>
+</div>
+</div>
+<br>

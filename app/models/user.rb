@@ -2,8 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  validates :email, format: { with: /\b[A-Z0-9._%a-z\-]+@ucr.ac.cr\.com\z/, message: ": Por favor ingrese con su correo oficial de la UCR" }
+         :recoverable, :rememberable, :trackable, :validatable
+  validates :email, format: { with: /\b[A-Z0-9._%a-z\-]+@ucr\.ac\.cr\z/, message: ": Por favor ingrese con su correo oficial de la UCR" }
   has_many :presentations
   has_many :administrations
   has_many :congresses, :through => :administrations

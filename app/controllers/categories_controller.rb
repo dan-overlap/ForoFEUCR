@@ -1,9 +1,13 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :set_congress
+  before_action :set_congress, :set_colors
   layout "insideapplication"
   # GET /categories
   # GET /categories.json
+
+  def set_colors
+    @colors = ["#e37222","#07889b","#66b9bf","#eeaa7b"]
+  end
 
   def set_congress
     @congress = Congress.find(params[:congress_id])
