@@ -70,8 +70,9 @@ class NewsController < ApplicationController
       @news.unliked_by current_user
     end
 
-     respond_to do |format|
-      format.js {redirect_to news_index_url}
+    respond_to do |f|
+      f.html { redirect_to [@news.congress}
+      f.js
     end
 
   end
