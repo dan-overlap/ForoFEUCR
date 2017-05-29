@@ -6,4 +6,5 @@ class News < ApplicationRecord
   has_attached_file :picture, content_type: { content_type: ["image/jpeg",    "image/gif", "image/jpg"] }
   validates_attachment_content_type :picture, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   #validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
+  acts_as_votable
 end

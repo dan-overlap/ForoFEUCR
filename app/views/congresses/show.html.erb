@@ -120,8 +120,14 @@
                             </div>
                             <div class="clearfix"></div>
                               <div class="btn-group" role="group" id="BegeniButonlari">
-                                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                                <%= button_to like_congress_news_path(@congress, news, :format => "js"), class: "liked-btn", :method => :put, :remote => :true do %>
+                                  <!-- <button type="button" class="liked-btn"><span class="glyphicon glyphicon-thumbs-up"></span></button> -->
+                                  <div>
+                                    <span><i class="glyphicon glyphicon-thumbs-up"></i></span>
+                                  </div>
+                                <% end %>
                                 <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+                                <span class='likes-count'> <%=news.get_upvotes.size %> </span>
                               </div>                 
                             </div>
                           </div>

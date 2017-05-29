@@ -8,7 +8,11 @@ Rails.application.routes.draw do
         resources :comments
       end
     end
-     resources :news
+     resources :news do
+      member do
+        put 'like' => "news#vote"
+      end
+    end
   end    
 
 

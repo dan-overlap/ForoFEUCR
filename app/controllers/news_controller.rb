@@ -1,6 +1,7 @@
 class NewsController < ApplicationController
-  before_action :set_news, only: [:show, :edit, :update, :destroy]
+  before_action :set_news, only: [:show, :edit, :update, :destroy, :vote, :dislike]
   before_action :set_congress
+  respond_to :js, :json, :html
   layout "insideapplication"
   # GET /news
   # GET /news.json
@@ -62,6 +63,23 @@ class NewsController < ApplicationController
     end
   end
 
+  def vote
+    if !current_user.liked? @news
+      @news.liked_by current_user
+    elsif current_user.liked? @news
+      @news.unliked_by current_user
+    end
+
+     respond_to do |format|
+      format.js {redirect_to news_index_url}
+    end
+
+  end
+
+  def dislike
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
 
@@ -77,4 +95,5 @@ class NewsController < ApplicationController
     def news_params
       params.require(:news).permit(:title, :image, :content, :author_id, :picture)
     end
+
 end
