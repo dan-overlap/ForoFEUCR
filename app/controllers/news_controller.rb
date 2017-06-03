@@ -1,6 +1,7 @@
 class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy, :vote, :dislike]
   before_action :set_congress
+  before_action :authenticate_user!, except: [:index, :show]
   respond_to :js, :json, :html
   layout "insideapplication"
   # GET /news
@@ -71,7 +72,7 @@ class NewsController < ApplicationController
     end
 
     respond_to do |f|
-      f.html { redirect_to [@news.congress}
+      f.html { redirect_to @news.congress}
       f.js
     end
 
