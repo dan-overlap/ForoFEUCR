@@ -94,6 +94,20 @@ ActiveRecord::Schema.define(version: 20170603025006) do
     t.index ["comments_id"], name: "index_discussions_on_comments_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "ending_date"
+    t.time     "start_time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "congress_id"
+    t.integer  "user_id"
+    t.index ["congress_id"], name: "index_events_on_congress_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "expositions", force: :cascade do |t|
     t.integer  "presentation_id"
     t.integer  "presenter_id"

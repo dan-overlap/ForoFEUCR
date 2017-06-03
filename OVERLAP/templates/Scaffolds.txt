@@ -6,3 +6,4 @@ rails g scaffold User name:string last_name:string user_id:string username:strin
 rails g scaffold Blog news:references
 rails g scaffold News title:string image:binary content:text author:references
 rails g scaffold Category name:string description:string presentations:references
+rails generate scaffold event name:string description:txt start_date:date ending_date:date start_time:time

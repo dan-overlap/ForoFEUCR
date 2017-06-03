@@ -98,4 +98,4 @@ class NewsController < ApplicationController
       params.require(:news).permit(:title, :image, :content, :author_id, :picture)
     end
 
-end
+  end
