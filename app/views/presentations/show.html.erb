@@ -7,6 +7,7 @@
     </div>
     <div class="col-xs-3">
       <h2><%="Foro de discusion"%></h2>
+      <textarea id="comment" class="form-control noresize" rows="2" placeholder="Ingrese su comentario" required></textarea>
       <%= link_to 'Agregar Comentario', new_congress_category_presentation_comment_path(@congress, @category, @presentation), class: "btn btn-info" %>
     </br></br>
     <% if @presentation.comments.any? %>

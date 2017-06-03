@@ -9,6 +9,8 @@
       <th>Categorias</th>
       <th>Ponencias</th>
       <th>Administradores</th>
+      <th>Dirección de Facebook</th>
+      <th>Dirección de Twitter</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -31,6 +33,8 @@
         <% end %>
         <td><%= presentations %></td>
         <td><%= congress.administrator_ids %></td>
+        <td><%= congress.facebook_dir %></td>
+        <td><%= congress.twitter_dir %></td>
         <td><%= link_to 'Ir a', congress, class: 'btn btn-info' %></td>
         <td><%= link_to 'Editar', edit_congress_path(congress), class: 'btn btn-info' %></td>
         <td><%= link_to 'Eliminar', congress, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>

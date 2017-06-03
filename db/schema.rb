@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528031357) do
+ActiveRecord::Schema.define(version: 20170603025006) do
 
   create_table "administrations", force: :cascade do |t|
     t.integer  "congress_id"
@@ -77,6 +77,8 @@ ActiveRecord::Schema.define(version: 20170528031357) do
     t.integer  "administrators_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "facebook_dir"
+    t.string   "twitter_dir"
     t.index ["administrators_id"], name: "index_congresses_on_administrators_id"
     t.index ["blog_id"], name: "index_congresses_on_blog_id"
     t.index ["calendar_id"], name: "index_congresses_on_calendar_id"
@@ -169,7 +171,7 @@ ActiveRecord::Schema.define(version: 20170528031357) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "username",                            null: false
+    t.string   "username"
     t.string   "user_id",                             null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

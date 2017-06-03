@@ -48,6 +48,17 @@
     <%= f.collection_check_boxes :administrator_ids, @users,'id','user_id',{multiple: true, class: 'checkbox-inline'} %>
   </div>
 
+  <div class="col-xs-6">
+    <%= f.label "Dirección de página de Facebook" %>
+    <%= f.text_field :facebook_dir %>
+  </div>
+
+  <div class="col-xs-6">
+    <%= f.label "Dirección de página de Twitter" %>
+    <%= f.text_field :twitter_dir %>
+  </div>
+
+
   </div>
 
   <div class="actions">
