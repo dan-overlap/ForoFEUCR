@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  
   devise_for :users, :controllers => {:registrations => "users/registrations"}
   resources :congresses do
     resources :categories do
@@ -8,7 +7,8 @@ Rails.application.routes.draw do
         resources :comments
       end
     end
-     resources :news do
+    resources :events
+    resources :news do
       member do
         put 'like' => "news#vote"
       end
