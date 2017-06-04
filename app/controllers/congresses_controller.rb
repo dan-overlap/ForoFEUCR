@@ -78,6 +78,6 @@ class CongressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def congress_params
-      params.require(:congress).permit(:name, :organizer, :responsible_id , :calendar_id, :blog_id, :categories_id, :administrator_ids => [])
+      params.require(:congress).permit(:name, :organizer, :responsible_id , :calendar_id, :blog_id, :categories_id, :facebook_dir, :twitter_dir, :administrator_ids => [])
     end
 end
