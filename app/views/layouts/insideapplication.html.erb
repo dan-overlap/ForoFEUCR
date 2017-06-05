@@ -28,7 +28,7 @@
 				</ul>
 				<ul class="nav navbar-nav pull-right">
 					<% if !user_signed_in? %>
-					<li><%= link_to "Registrarse", new_user_registration_path, class: "pull-right" %></li>
+					<li><%= link_to "Registrarse", new_user_registration_path class: "pull-right" %></li>
 					<li><%= link_to "Iniciar sesión", new_user_session_path %></li>
 					<%else%>
 					<li><%= link_to "Cerrar sesión",  destroy_user_session_path, :method => :delete %></li>
@@ -91,8 +91,13 @@
 
 	<div class="footer-right">
 
+
+	<% if @congress.facebook_dir != nil && @congress.facebook_dir != ""%>
 		<a href=<%= "http://"+@congress.facebook_dir.to_s %>><i class="fa fa-facebook-square"></i></a>
+	<%end%>
+	<% if @congress.twitter_dir != nil && @congress.twitter_dir != ""%>
 		<a href=<%= "http://"+@congress.twitter_dir.to_s %>><i class="fa fa-twitter"></i></a>
+	<%end%>
 		
 
 	</div>

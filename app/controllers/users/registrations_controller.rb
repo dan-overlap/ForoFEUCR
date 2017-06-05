@@ -32,7 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   # def destroy
-  #   super
+  #    super
   # end
 
   # GET /resource/cancel
@@ -57,8 +57,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
+  #   def after_sign_up_path_for(resource)
+  #    super(resource)
   # end
 
   # The path used after sign up for inactive accounts.
