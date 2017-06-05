@@ -11,7 +11,7 @@
       <%= link_to 'Agregar Comentario', new_congress_category_presentation_comment_path(@congress, @category, @presentation), class: "btn btn-info" %>
     </br></br>
     <% if @presentation.comments.any? %>
-    <% @presentation.comments.reverse.each do |comment|%>
+    <% @presentation.comments.each do |comment|%>
 
     <div class="media">
      <div class="media-left">
