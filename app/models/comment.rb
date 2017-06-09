@@ -5,5 +5,5 @@ class Comment < ApplicationRecord
   has_many :users, :foreign_key => 'likes'
   has_many :users, :foreign_key => 'dislikes'
   belongs_to :presentation, optional: true
-
+  has_ancestry
 end

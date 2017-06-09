@@ -42,6 +42,8 @@ gem 'jbuilder', '~> 2.5'
 
 # gem bootstrap
 
+gem 'ancestry'
+
 gem 'acts_as_votable'
 
 gem 'bootstrap', '~> 4.0.0.alpha6'
