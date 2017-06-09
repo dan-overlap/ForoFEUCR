@@ -11,15 +11,26 @@
 </head>
 
 <body>
+	<% if notice %>
+	<div id="notice_wrapper", class=" pull-center alert alert-success">
+		<p class="notice"><%= notice %></p>
+	</div>
+
+	<% elsif alert %>
+	<div id="notice_wrapper">
+		<p class="alert" ><%= alert %></p>
+	</div>
+
+	<% end %>
 	<div style='min-height: 100%'>
-			
+
 		<nav class="navbar navbar-inverse navbar-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#"><%= Congress.find(@congress).name %></a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Inicio</a></li>
+					<li><%= link_to "Inicio", congress_path(@congress) %></li>
 					<li><%= link_to "Ponencias", congress_categories_path(@congress) %></li>
 					<li><a href="#">Proximos eventos</a></li>
 					<li><a href="#">Noticias</a></li>
@@ -75,16 +86,26 @@
 
 		<!-Fin de Banner!>
 
-		<div id="main-container" class="container">
 
-			<p class="notice"><%= notice %></p>
-			<p class="alert" ><%= alert %></p>
 
-		</div> 
 		<div class="container">
 			<%= yield %>
 		</div>
+
 	</div>
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+			setTimeout(function() {
+				$('#notice_wrapper').fadeOut("slow", function(){
+					$(this).remove();
+				});
+			}, 4500);
+		});
+
+	</script>
+
 </body>
 
 <div id="footer" class="footer-distributed footer">
@@ -92,12 +113,12 @@
 	<div class="footer-right">
 
 
-	<% if @congress.facebook_dir != nil && @congress.facebook_dir != ""%>
+		<% if @congress.facebook_dir != nil && @congress.facebook_dir != ""%>
 		<a href=<%= "http://"+@congress.facebook_dir.to_s %>><i class="fa fa-facebook-square"></i></a>
-	<%end%>
-	<% if @congress.twitter_dir != nil && @congress.twitter_dir != ""%>
+		<%end%>
+		<% if @congress.twitter_dir != nil && @congress.twitter_dir != ""%>
 		<a href=<%= "http://"+@congress.twitter_dir.to_s %>><i class="fa fa-twitter"></i></a>
-	<%end%>
+		<%end%>
 		
 
 	</div>
@@ -122,6 +143,7 @@
 	</div>
 
 </div>
+
 
 
 </html>

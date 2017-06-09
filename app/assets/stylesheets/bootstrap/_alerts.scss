@@ -58,6 +58,12 @@
 
 .alert-success {
   @include alert-variant($alert-success-bg, $alert-success-border, $alert-success-text);
+
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 999;
 }
 
 .alert-info {
