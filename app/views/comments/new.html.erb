@@ -1,5 +1,7 @@
-<h1>New Comment</h1>
+<div class="container">
+	<h1>New Comment</h1>
 
-<%= render 'form', comment: @comment %>
+	<%= render 'form', comment: @comment %>
 
-<%= link_to 'Back', congress_category_presentation_path(@congress, @category, @presentation) %>
+	<%= link_to 'Back', congress_category_presentation_path(@congress, @category, @presentation) %>
+</div>

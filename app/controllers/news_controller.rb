@@ -2,7 +2,7 @@ class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy, :vote, :dislike]
   before_action :set_congress
   before_action :authenticate_user!, except: [:index, :show]
-  respond_to :js, :json, :html
+  respond_to :js, :json
   layout "insideapplication"
   # GET /news
   # GET /news.json
@@ -72,15 +72,16 @@ class NewsController < ApplicationController
     end
 
     respond_to do |f|
-      f.html { redirect_to @news.congress}
+      f.html do
+                flash[:success] = "Like Updated!"
+                redirect_to :back
+            end
       f.js
     end
 
   end
 
-  def dislike
 
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

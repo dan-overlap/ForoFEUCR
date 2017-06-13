@@ -1,26 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1>Presentations</h1>
 
-<h1>Presentations</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Authors</th>
+        <th>Title</th>
+        <th>Abstract</th>
+        <th>Uploader</th>
+        <th>Document</th>
+        <th>Status</th>
+        <th>Discussion</th>
+        <th>Presenters</th>
+        <th>Likes</th>
+        <th>Dislikes</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Authors</th>
-      <th>Title</th>
-      <th>Abstract</th>
-      <th>Uploader</th>
-      <th>Document</th>
-      <th>Status</th>
-      <th>Discussion</th>
-      <th>Presenters</th>
-      <th>Likes</th>
-      <th>Dislikes</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% Category.find(params[:category_id]).presentations.each do |presentation| %>
+    <tbody>
+      <% Category.find(params[:category_id]).presentations.each do |presentation| %>
       <tr>
         <td><%= presentation.authors_id %></td>
         <td><%= presentation.title %></td>
@@ -36,10 +35,11 @@
         <td><%= link_to 'Edit', edit_congress_category_presentation_path(@congress, @category, presentation) %></td>
         <td><%= button_to 'Destroy', congress_category_presentation_path(@congress, @category, presentation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Presentation', new_congress_category_presentation_path %>
+  <%= link_to 'New Presentation', new_congress_category_presentation_path %>
+</div>

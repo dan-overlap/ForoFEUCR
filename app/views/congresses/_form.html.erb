@@ -23,10 +23,7 @@
     <%= f.text_field :organizer %>
   </div>
 
-  <div class="col-xs-6">
-    <%= f.label :responsible_id %>
-    <%= f.select :responsible_id , options_from_collection_for_select(@users,'id','user_id'), {:include_blank => "   "}, {:required => true}  %>
-  </div>
+  
 
   <div class="col-xs-6">
     <%= f.label :calendar_id %>
@@ -43,10 +40,6 @@
     <%= f.text_field :categories_id %>
   </div>
 
-  <div class="col-xs-6">
-    <%= f.label :administrator_ids %>
-    <%= f.collection_check_boxes :administrator_ids, @users,'id','user_id',{multiple: true, class: 'checkbox-inline'} %>
-  </div>
 
   <div class="col-xs-6">
     <%= f.label "Dirección de página de Facebook" %>

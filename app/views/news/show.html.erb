@@ -1,30 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p>
+    <strong>Title:</strong>
+    <%= @news.title %>
+  </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @news.title %>
-</p>
+  <p>
+    <strong>Image:</strong>
+    <%= @news.image %>
+  </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @news.image %>
-</p>
+  <p>
+    <strong>Content:</strong>
+    <%= @news.content %>
+  </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @news.content %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @news.author_id %>
-</p>
+  <p>
+    <strong>Author:</strong>
+    <%= @news.author_id %>
+  </p>
 
 
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag @news.picture %>
-</p>
+  <p>
+    <strong>Picture:</strong>
+    <%= image_tag @news.picture %>
+  </p>
 
-<%= link_to 'Editar', edit_congress_news_path(@news), class: "btn btn-info" %> |
-<%= link_to 'Volver', congress_path(params[:congress_id]), class: "btn btn-info"  %>
+  <%= link_to 'Editar', edit_congress_news_path(@news), class: "btn btn-info" %> |
+  <%= link_to 'Volver', congress_path(params[:congress_id]), class: "btn btn-info"  %>
+</div>

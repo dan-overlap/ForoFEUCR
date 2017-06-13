@@ -1,6 +1,9 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, :set_replies, only: [:show, :edit, :update, :destroy]
   before_action :set_congress, :set_category, :set_presentation
+  before_action :authenticate_user!, except: [:index, :show]
+  respond_to
+  layout "insideapplication"
   # GET /comments
   # GET /comments.json
   def index
@@ -10,6 +13,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+
   end
 
   # GET /comments/new
@@ -28,13 +32,15 @@ class CommentsController < ApplicationController
     @comment.author_id = current_user.id
     @comment.presentation = @presentation
     #@comment.comment_id = 3
-    respond_to do |format|
+    respond_to  do |format|
       if @comment.save
         format.html { redirect_to  [@congress, @category, @presentation], notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
+        format.js 
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js 
       end
     end
   end
@@ -47,9 +53,11 @@ class CommentsController < ApplicationController
         @comment.presentation = @presentation
         format.html { redirect_to [@congress, @category, @presentation, @comment], notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
+        format.js {render layout: false}
       else
         format.html { render :edit }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js {render layout: false}
       end
     end
   end
@@ -76,6 +84,10 @@ class CommentsController < ApplicationController
 
     def set_congress
       @congress = Congress.find(params[:congress_id])
+    end
+
+    def set_replies
+      @replies = Comment.all
     end
 
     def set_presentation

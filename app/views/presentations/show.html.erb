@@ -1,44 +1,88 @@
 
-<div class="container">
+<div class="container-fluid">
+
+<h1 class="display-1"><%=@presentation.title%></h1>
+
   <div class="row">
     <div class="col-xs-9">
-      <iframe src=<%=@presentation.pdf_file.to_s %> style="width:100%; height:700px;" frameborder="0"></iframe>
+      
+        <iframe src=<%=@presentation.pdf_file.to_s %> style="width:100%; height:1200px;" frameborder="0" ></iframe>
+      
     </div>
-    <div class="col-xs-3">
-      <h2><%="Foro de discusion"%></h2>
-      <textarea id="comment" class="form-control noresize" rows="2" placeholder="Ingrese su comentario" required></textarea>
-      <%= link_to 'Agregar Comentario', new_congress_category_presentation_comment_path(@congress, @category, @presentation), class: "btn btn-info" %>
-      </br></br>
-      <% if @presentation.comments.any? %>
-      <% @presentation.comments.arrange(:order => :created_at).each do |comment, replies|%>
-        
-        <div class="media">
-          <div class="media-left">
-            <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:45px">
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading"><%=User.find(comment.author_id).username%> <small><i>Publicado: <%=comment.created_at.strftime('%F %T') %></i></small></h4>
-            <p><%=comment.body%></p>
-            <%= link_to "Responder", new_congress_category_presentation_comment_path(@congress, @category, @presentation, :parent_id => comment), class: "pull-right"%>
-            <% replies.each do |reply, nada| %>
-              <div class="media">
-                <div class="media-left">
-                  <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:45px">
+    <div class="col-xs-3 pull-right" >
+
+      <!-- Inicio de Modal-->
+
+        <%= form_for([@congress, @category, @presentation, @comment], remote: true) do |f| %>
+          <div class="modal fade" id="mynewpost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Post</h4>
                 </div>
-                <div class="media-body">
-                  <h4 class="media-heading"><%=User.find(reply.author_id).username%> <small><i>Publicado: <%=reply.created_at.strftime('%F %T') %></i></small></h4>
-                  <p><%=reply.body%></p>
+
+                <div class="modal-body">
+
+                  <%= f.hidden_field :parent_id %>
+                  <% if @comment.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+                      <ul>
+                      <% @comment.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+
+                  <div class="field">
+                    <%= "Título" %>
+                    <%= f.text_field :title, class: "form-control comment_title" %>
+                  </div>
+
+                  <div class="field">
+                    <%= "Comentario" %>
+                    <%= f.text_area :body, class: "form-control comment_body" %>
+                  </div>
+
                 </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" id="mynewpostclose">Cerrar</button>
+                  <%= submit_tag "Comentar", :format => :js, class: "btn btn-primary" %>
+                </div>
+
+                
               </div>
-            <%end%>
+            </div>
           </div>
-        </div>
-      <%end%>
-      <%end%>
+        <% end %>
+
+      <!--Fin de Modal -->
+
+
+      <h2><%="Foro de discusion"%></h2>
+      <button type="button" class="btn btn-default btn-lg pull-right" data-toggle="modal" data-target="#mynewpost">
+            Comentar
+      </button>
+      </br></br>
+      <div id= "container_comments">
+        <%= render @presentation.comments %>
+      </div>
+      <%if @presentation.comments.count > 2%>
+        <button type="button" class="btn btn-default btn-lg pull-right" data-toggle="modal" data-target="#mynewpost" >
+            Comentar
+        </button>
+       <%end%> 
     </div>
   </div>
-</div>
+
 
 
 <%= link_to 'Edit', edit_congress_category_presentation_path(@congress,@category ,@presentation) %> |
-<%= link_to 'Back', congress_category_presentations_path %>
+<%= link_to 'Volver', congress_category_path(@congress,@category) %>
+</div>

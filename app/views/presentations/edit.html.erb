@@ -1,9 +1,11 @@
-<h1>Editar Ponencia</h1>
+<div class="container">
+	<h1>Editar Ponencia</h1>
 
-<%= render 'form', presentation: @presentation %>
-<div class="field">
-	<% user = User.find(@presentation.uploader_id.to_i)%>
-    <B><I><%= ("Subido por " + user.username) %> </I></B>
+	<%= render 'form', presentation: @presentation %>
+	<div class="field">
+		<% user = User.find(@presentation.uploader_id.to_i)%>
+		<B><I><%= ("Subido por " + user.username) %> </I></B>
+	</div>
+	<%= link_to 'Ir a', congress_category_presentation_path(@congress, @category, @presentation), class: "btn btn-info" %> 
+	<%= link_to 'Volver', congress_category_path(@congress, @category), class: "btn btn-info" %>
 </div>
-<%= link_to 'Ir a', congress_category_presentation_path(@congress, @category, @presentation), class: "btn btn-info" %> 
-<%= link_to 'Volver', congress_category_path(@congress, @category), class: "btn btn-info" %>

@@ -1,25 +1,26 @@
-<h1>Lista de Congresos</h1>
+<div class="container">
+  <h1>Lista de Congresos</h1>
 
-<table class="table">
-  <thead>
-    <tr scope="row">
-      <th>Nombre</th>
-      <th>Organizador</th>
-      <th>Responsable</th>
-      <th>Categorias</th>
-      <th>Ponencias</th>
-      <th>Administradores</th>
-      <th>Dirección de Facebook</th>
-      <th>Dirección de Twitter</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
+  <table class="table">
+    <thead>
+      <tr scope="row">
+        <th>Nombre</th>
+        <th>Organizador</th>
+        <th>Responsable</th>
+        <th>Categorias</th>
+        <th>Ponencias</th>
+        <th>Administradores</th>
+        <th>Dirección de Facebook</th>
+        <th>Dirección de Twitter</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @congresses.each do |congress| %>
-    <!--%# @users = User.where('id=?',congress.responsible_id).references(:user)%-->
-    <% @user = User.find(congress.responsible_id)%>
-    
+    <tbody>
+      <% @congresses.each do |congress| %>
+      <!--%# @users = User.where('id=?',congress.responsible_id).references(:user)%-->
+      <% @user = User.find(congress.responsible_id)%>
+      
       <tr scope="row">
         <td><%= congress.name %></td>
         <td><%= congress.organizer %></td>
@@ -27,9 +28,9 @@
         <td><%= congress.categories.count %></td>
         <% presentations = 0 %>
         <% if congress.categories.any? %>
-          <% congress.categories.each do |category| %>
-            <% presentations += category.presentations.count %>
-          <% end %>
+        <% congress.categories.each do |category| %>
+        <% presentations += category.presentations.count %>
+        <% end %>
         <% end %>
         <td><%= presentations %></td>
         <td><%= congress.administrator_ids %></td>
@@ -39,11 +40,12 @@
         <td><%= link_to 'Editar', edit_congress_path(congress), class: 'btn btn-info' %></td>
         <td><%= link_to 'Eliminar', congress, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-     
-    <% end %>
-  </tbody>
-</table>
+      
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'Crear Congreso', new_congress_path, class: 'btn btn-default' %>
+  <%= link_to 'Crear Congreso', new_congress_path, class: 'btn btn-default' %>
+</div>

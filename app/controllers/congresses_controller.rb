@@ -1,6 +1,6 @@
 class CongressesController < ApplicationController
   before_action :set_congress, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /congresses
   # GET /congresses.json
 
@@ -16,6 +16,7 @@ class CongressesController < ApplicationController
   # GET /congresses/1.json
   def show
    render layout: 'insideapplication'
+   @news = @congress.news
   end
 
   # GET /congresses/new
@@ -34,7 +35,7 @@ class CongressesController < ApplicationController
   def create
 
     @congress = Congress.new(congress_params)
-
+    @congress.responsible_id = current_user.id
     respond_to do |format|
       if @congress.save
         format.html { redirect_to @congress, notice: 'Congress was successfully created.' }
