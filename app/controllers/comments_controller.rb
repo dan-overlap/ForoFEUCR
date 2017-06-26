@@ -1,13 +1,14 @@
 class CommentsController < ApplicationController
   before_action :set_comment, :set_replies, only: [:show, :edit, :update, :destroy]
   before_action :set_congress, :set_category, :set_presentation
-  before_action :authenticate_user!, except: [:index, :show]
-  respond_to
+  before_action :authenticate_user!, except: [:index, :show, :create]
+  respond_to :js, :html, :json
   layout "insideapplication"
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = @presentation.comments.all
+    @comment = Comment.new
   end
 
   # GET /comments/1
@@ -18,7 +19,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new(:parent_id => params[:parent_id])
+    
   end
 
   # GET /comments/1/edit
@@ -51,13 +52,13 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update(comment_params)
         @comment.presentation = @presentation
-        format.html { redirect_to [@congress, @category, @presentation, @comment], notice: 'Comment was successfully updated.' }
+        format.html { redirect_to [@congress, @category, @presentation], notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
-        format.js {render layout: false}
+        format.js 
       else
         format.html { render :edit }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
-        format.js {render layout: false}
+        format.js 
       end
     end
   end

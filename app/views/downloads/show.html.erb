@@ -1,0 +1,15 @@
+<div class="container">
+<h1>
+  <%= @download.name %>
+</h1>
+</br>
+<p>
+  <%= @download.description %>
+</p>
+
+<iframe src=<%=@download.file.to_s %> style="width:100%; height:1200px;" frameborder="0" ></iframe>
+
+</div>
+
+<%= link_to 'Edit', edit_congress_download_path(@congress,@download) %> |
+<%= link_to 'Back', congress_downloads_path(@congress) %>

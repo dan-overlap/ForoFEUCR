@@ -3,7 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   def sign_up_params
-    params.require(:user).permit(:username, :user_id, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :user_id, :email, :password, :password_confirmation, :avatar)
   end
 
   def account_update_params
@@ -11,9 +11,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+   def new
+     super
+     @avatars = [{:id => 1, :image =>"avatar_1"},{:id => 2, :image =>"avatar_2"},{:id => 3, :image =>"avatar_3"},
+      {:id => 4, :image =>"avatar_4"},{:id => 5, :image =>"avatar_5"},{:id => 6, :image =>"avatar_6"},
+      {:id => 7, :image =>"avatar_7"},{:id => 8, :image =>"avatar_8"}]
+   end
 
   # POST /resource
   # def create

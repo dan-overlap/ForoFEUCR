@@ -14,6 +14,6 @@ class Presentation < ApplicationRecord
 
   has_attached_file :pdf_file
   validates_attachment_content_type :pdf_file, :content_type => ["application/pdf"]
-
+  validates_attachment_presence :pdf_file
   
 end

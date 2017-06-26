@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       end
     end
     resources :events
+    resources :downloads
     resources :news do
       member do
         put 'like' => "news#vote"

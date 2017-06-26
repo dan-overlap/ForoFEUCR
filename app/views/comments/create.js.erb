@@ -1,1 +1,6 @@
-alert("holoooo!!!");
+$("#mynewcomment").modal('hide');
+$(".comment_title").val('');
+$(".comment_content").val('');
+$("#container_comments").append('<%= j render @comment %>');
+$("#comment_<%= @comment.id %>").hide().fadeIn(1000);
+  

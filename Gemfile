@@ -7,7 +7,8 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.2'
+gem 'rails'
+gem 'rails-ujs'
 # Use sqlite3 as the database for Active Record
 gem 'rails-assets-coverflow', source: 'http://insecure.rails-assets.org'
 gem 'sqlite3'
@@ -30,6 +31,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'execjs'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'fullcalendar_engine', '~> 1.0', '>= 1.0.6'
 
 gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "3.1-stable"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

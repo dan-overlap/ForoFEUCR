@@ -1,45 +1,72 @@
 <div class="container">
   <h1>Comments</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Author</th>
-        <th>Title</th>
-        <th>Body</th>
-        <th>Replies</th>
-        <th>Likes</th>
-        <th>Dislikes</th>
-        <th>Is important</th>
-        <th>Is inappropriate</th>
-        <th>Reviewed</th>
-        <th>Denounced</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+        <%= form_for([@congress, @category, @presentation, @comment], remote: true) do |f| %>
+          <div class="modal fade" id="mynewpost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
 
-    <tbody>
-      <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.author_id %></td>
-        <td><%= comment.title %></td>
-        <td><%= comment.body %></td>
-        <td><%= comment.replies_id %></td>
-        <td><%= comment.likes_id %></td>
-        <td><%= comment.dislikes_id %></td>
-        <td><%= comment.is_important %></td>
-        <td><%= comment.is_inappropriate %></td>
-        <td><%= comment.reviewed %></td>
-        <td><%= comment.denounced %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Post</h4>
+                </div>
+
+                <div class="modal-body">
+
+                  <%= f.hidden_field :parent_id %>
+                  <% if @comment.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+                      <ul>
+                      <% @comment.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+
+                  <div class="field">
+                    <%= "Título" %>
+                    <%= f.text_field :title, class: "form-control comment_title" %>
+                  </div>
+
+                  <div class="field">
+                    <%= "Comentario" %>
+                    <%= f.text_area :body, class: "form-control comment_body" %>
+                  </div>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" id="mynewpostclose">Cerrar</button>
+                  <%= submit_tag "Comentar", :format => :js, class: "btn btn-primary" %>
+                </div>
+
+                        </div>
+            </div>
+          </div>
+        <% end %>
+
+
+
+                      <h2><%="Foro de discusion"%></h2>
+      <button type="button" class="btn btn-default btn-lg pull-right" data-toggle="modal" data-target="#mynewpost">
+            Comentar
+      </button>
+      </br></br>
+      <div id= "container_comments">
+        <%= render @presentation.comments %>
+      </div>
+      <%if @presentation.comments.count > 2%>
+        <button type="button" class="btn btn-default btn-lg pull-right" data-toggle="modal" data-target="#mynewpost" >
+            Comentar
+        </button>
+       <%end%> 
+    </div>
 
   <br>
 
-  <%= link_to 'New Comment', new_comment_path %>
+ 
 </div>
