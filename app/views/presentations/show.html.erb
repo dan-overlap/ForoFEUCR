@@ -70,7 +70,9 @@
       <button type="button" class="btn btn-default btn-lg pull-right" data-toggle="modal" data-target="#mynewcomment" data-no-turbolink="true">
             Comentar
       </button>
-      </br></br>
+      </br>
+      </br>
+      </br>
       <div id= "container_comments">
         <%= render @presentation.comments.where(ancestry: nil) %>
       </div>
@@ -83,7 +85,8 @@
   </div>
 
 
-
-<%= link_to 'Edit', edit_congress_category_presentation_path(@congress,@category ,@presentation) %> |
+<%if current_user.try(:admin?)%>
+  <%= link_to 'Edit', edit_congress_category_presentation_path(@congress,@category ,@presentation) %> |
+<%end%>
 <%= link_to 'Volver', congress_category_path(@congress,@category) %>
 </div>

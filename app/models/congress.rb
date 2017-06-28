@@ -6,6 +6,7 @@ class Congress < ApplicationRecord
   has_many :events
   has_many :categories
   has_many :downloads
+  has_many :banners
   has_many :administrators, :through => :administrations, source: :user
   
 

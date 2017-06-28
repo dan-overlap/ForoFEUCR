@@ -19,6 +19,7 @@
   <%end%>
 
 </div>
-
-  <%= link_to 'New Event', new_congress_event_path %>
+<%if current_user.try(:admin?)%>
+  <%= link_to 'New Event', new_congress_event_path, class: "btn btn-info" %>
+<%end%>
 </div>

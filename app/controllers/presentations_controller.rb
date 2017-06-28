@@ -13,6 +13,7 @@ class PresentationsController < ApplicationController
   # GET /presentations/1.json
   def show
     @comment = Comment.new
+    @reply = Comment.new
   end
 
   # GET /presentations/new

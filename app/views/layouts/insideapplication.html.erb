@@ -39,14 +39,16 @@
 		<nav class="navbar navbar-inverse navbar-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#"><%= @congress.name %></a>
+					<p class="navbar-brand" style='color: white'><%= @congress.name %></p>
 				</div>
 				<ul class="nav navbar-nav">
 					<li><%= link_to "Inicio", congress_path(@congress) %></li>
 					<li><%= link_to "Ponencias", congress_categories_path(@congress) %></li>
-					<li><a href="#">Proximos eventos</a></li>
-					<li><a href="#">Noticias</a></li>
-					<li><a href="#">Descargas</a></li>
+					<li><a href=<%= congress_events_path(@congress) %>>Próximos eventos</a></li>
+					<li><a href=<%= congress_downloads_path(@congress) %>>Descargas</a></li>
+					<%if current_user.try(:admin?)%>
+						<li><a href=<%= congress_admin_path(@congress) %>>Administración</a></li>
+					<%end%>
 					<li><a href="http://www.ucr.ac.cr">UCR</a></li>
 				</ul>
 				<ul class="nav navbar-nav pull-right">
@@ -72,17 +74,29 @@
 
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
-				<div class="item active">
-					<img src="http://overlapcr.com/media/feucr/bn1.jpg" alt="Congreso">
-				</div>
+				<%if @congress.banners.any? %>
+					<div class="item active">
+						<img src=<%=@congress.banners.first.image.to_s%> alt=<%=@congress.banners.first.description%>>
+					</div>
+					<% size = @congress.banners.size %>
+					<% @congress.banners.last(size-1).each do |banner| %>
+						<div class="item">
+							<img src=<%=banner.image.to_s%> alt=<%=banner.description%>>
+						</div>
+					<%end%>
+				<%else%>
+					<div class="item active">
+						<img src="http://overlapcr.com/media/feucr/bn1.jpg" alt="Congreso">
+					</div>
 
-				<div class="item">
-					<img src="http://overlapcr.com/media/feucr/bn2.jpg" alt="Feucr">
-				</div>
+					<div class="item">
+						<img src="http://overlapcr.com/media/feucr/bn2.jpg" alt="Feucr">
+					</div>
 
-				<div class="item">
-					<img src="http://overlapcr.com/media/feucr/bn3.jpg" alt="UCR">
-				</div>
+					<div class="item">
+						<img src="http://overlapcr.com/media/feucr/bn3.jpg" alt="UCR">
+					</div>
+				<%end%>
 			</div>
 
 			<!-- Left and right controls -->
@@ -130,12 +144,14 @@
 			·
 			<%= link_to "Ponencias", congress_categories_path(@congress) %>
 			·
-			<a href="#">Próximos eventos</a>
+			<a href=<%= congress_events_path(@congress) %>>Próximos eventos</a>
 			·
-			<a href="#">Noticias</a>
+			<a href=<%= congress_downloads_path(@congress) %>>Descargas</a>
 			·
-			<a href="#">Descargas</a>
-			·
+			<%if current_user.try(:admin?)%>
+				<a href=<%= congress_admin_path(@congress) %>>Administración</a>
+				·
+			<%end%>	
 			<a href="http://www.ucr.ac.cr">UCR</a>
 		</p>
 

@@ -1,0 +1,12 @@
+	$(".admin").bind('change', function(){
+  	if (this.checked){
+    	$.ajax({
+      	url: <%= congress_adminToggle_path(params[:congress_id]) %>,
+      	type: 'POST',
+      	data:{"user_id": this.value, "admin": this.checked }
+    	});
+  	}
+  	else {
+    	 alert("no");
+  	}
+	});

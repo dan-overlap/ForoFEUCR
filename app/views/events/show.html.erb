@@ -23,7 +23,8 @@
     <strong>Start time:</strong>
     <%= @event.start_time %>
   </p>
-
-  <%= link_to 'Edit', edit_congress_event_path(@congress, @event) %> |
-  <%= link_to 'Back', congress_events_path(@congress) %>
+  <%if current_user.try(:admin?)%>
+    <%= link_to 'Edit', edit_congress_event_path(@congress, @event), class: "btn btn-info" %> |
+  <%end%>
+  <%= link_to 'Back', congress_events_path(@congress), class: "btn btn-info" %>
 </div>

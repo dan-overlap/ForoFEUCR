@@ -1,17 +1,17 @@
 <div class="media" id="comment_<%= comment.id %>">
           <div class="media-left">
-            <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:45px">
+            <img src="<%= image_path("comment.png")%>" class="media-object" style="width:45px">
           </div>
           <div class="media-body">
             <h4 class="media-heading"><%=User.find(comment.author_id).username%> <small><i>Publicado: <%=comment.created_at.strftime('%F %T') %></i></small></h4>
             <p><%=comment.body%></p>
-            <%= link_to "Responder", new_congress_category_presentation_comment_path(@congress, @category, @presentation, :parent_id => comment), class: "pull-right"%>
+            <%= link_to "Responder", new_congress_category_presentation_comment_path(@congress, @category, @presentation, :parent_id => comment), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "#mynewcomment" %>
             <% replies = Comment.where(ancestry: comment) %>
             <% if replies.any? %>
               <% replies.each do |reply| %>
                 <div class="media">
                   <div class="media-left">
-                    <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:45px">
+                    <img src="<%= image_path("reply.png")%>" class="media-object" style="width:45px">
                   </div>
                   <div class="media-body">
                     <h4 class="media-heading"><%=User.find(reply.author_id).username%> <small><i>Publicado: <%=reply.created_at.strftime('%F %T') %></i></small></h4>

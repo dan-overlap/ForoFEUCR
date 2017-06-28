@@ -1,0 +1,28 @@
+<%= form_for [@congress, @banner] do |form| %>
+  <% if banner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(banner.errors.count, "error") %> prohibited this banner from being saved:</h2>
+
+      <ul>
+      <% banner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group">
+    <%= form.label "Imagen" %>
+    <%= form.file_field :image %>
+    
+  </div>
+
+  <div class="field">
+    <%= form.label "Descripción" %>
+    <%= form.text_field :description, id: :banner_description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Agregar", class: "btn btn-info" %>
+  </div>
+<% end %>

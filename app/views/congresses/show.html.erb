@@ -16,7 +16,7 @@
   </div>
 
   <div class="col-6 col-md-4">
-    <%= link_to congress_categories_path(@congress), {class: "btn btn-info btn-lg btn-block"} do %>
+    <%= link_to congress_events_path(@congress), {class: "btn btn-info btn-lg btn-block"} do %>
     <i class="glyphicon glyphicon-calendar"></i> Eventos próximos
     <% end %>
   </div>
@@ -38,9 +38,14 @@
 
     </br>
 
-    <h2>Pizarra informativa  <%= link_to new_congress_news_path(Congress.find(params[:id])), {class: "btn btn-info"} do %> 
-      <i class="glyphicon glyphicon-plus"></i> Agregar
-      <%end%>
+    <h2>Pizarra informativa  
+      <%if current_user.try(:admin?)%>
+        <%= link_to new_congress_news_path(Congress.find(params[:id])), {class: "btn btn-info"} do %> 
+          <i class="glyphicon glyphicon-plus"></i> Agregar
+        <%end%>
+
+    <%end%>
+    
     </h2>
   </br>
   
@@ -55,8 +60,12 @@
 
   </br>
 
-  <h2>Próximos eventos  <%= link_to new_congress_event_path(Congress.find(params[:id])), {class: "btn btn-info"} do %> 
-    <i class="glyphicon glyphicon-plus"></i> Agregar
+  <h2>Próximos eventos
+    <%if current_user.try(:admin?)%>
+        <%= link_to new_congress_event_path(Congress.find(params[:id])), {class: "btn btn-info"} do %> 
+          <i class="glyphicon glyphicon-plus"></i> Agregar
+        <%end%>
+
     <%end%>
   </h2>
 

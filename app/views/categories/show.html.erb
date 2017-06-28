@@ -28,8 +28,11 @@
     <td><%= presentation.likes_id %></td>
     <td><%= presentation.dislikes_id %></td>
     <td><%= link_to 'Ir a', congress_category_presentation_path(@congress, @category, presentation), class: "btn btn-info" %></td>
-    <td><%= link_to 'Editar', edit_congress_category_presentation_path(@congress, @category, presentation), class: "btn btn-info" %></td>
-    <td><%= button_to 'Eliminar', congress_category_presentation_path(@congress, @category, presentation), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+    <%if current_user.try(:admin?)%>
+          <td><%= link_to 'Editar', edit_congress_category_presentation_path(@congress, @category, presentation), class: "btn btn-info" %></td>
+          <td><%= button_to 'Eliminar', congress_category_presentation_path(@congress, @category, presentation), method: :delete, data: { confirm: '¿Seguro que desea eliminar esta ponencia?' }, class: "btn btn-danger" %></td>
+    <%end%>
+
   </tr>
   <% end %>
 </tbody>
@@ -41,6 +44,9 @@
 </br></br></br>
 <%end%>
 
-<%= link_to 'Editar', edit_congress_category_path(params[:congress_id], @category), class: "btn btn-info" %> |
+<%if current_user.try(:admin?)%>
+  <%= link_to 'Editar', edit_congress_category_path(params[:congress_id], @category), class: "btn btn-info" %> |
+<%end%>
+
 <%= link_to 'Volver', congress_categories_path, class: "btn btn-info" %>
 </div>

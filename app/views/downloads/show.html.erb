@@ -11,5 +11,7 @@
 
 </div>
 
-<%= link_to 'Edit', edit_congress_download_path(@congress,@download) %> |
-<%= link_to 'Back', congress_downloads_path(@congress) %>
+<%if current_user.try(:admin?)%>
+	<%= link_to 'Edit', edit_congress_download_path(@congress,@download) %> |
+<%end%>
+<%= link_to 'Volver', congress_downloads_path(@congress), class: "btn btn-info" %>

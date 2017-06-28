@@ -1,6 +1,8 @@
 class CongressesController < ApplicationController
   before_action :set_congress, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_admin_params, only: [:toggleDefault,:admin]
+  before_action :authenticate_user!, except: [:show]
+  before_action :check_elevation, only: [:index, :set_admin_params,:admin, :toggleDefault, :adminToggle]
   layout "congresses"
   # GET /congresses
   # GET /congresses.json
@@ -19,6 +21,10 @@ class CongressesController < ApplicationController
    render layout: 'insideapplication'
    @news = @congress.news
   end
+ # GET /congresses/admin 
+  def admin
+    render layout: 'insideapplication'
+  end
 
   # GET /congresses/new
   def new
@@ -26,9 +32,48 @@ class CongressesController < ApplicationController
     @users = User.all
   end
 
+  def check_elevation
+    if (!current_user.try(:admin?))
+     redirect_to Congress.find_by(:default => true), notice: 'Debe ser administrador para ingresar.'
+    end  
+  end
+
   # GET /congresses/1/edit
   def edit
     @users = User.all
+  end
+
+  def adminToggle
+    @user = User.find(params[:user_id])
+    puts @user.username
+    @user.update_attributes(:admin => !@user.admin?)
+    @user.save
+    puts @user.errors.full_messages
+    # ... update successful
+
+  end
+
+  def default
+    default = Congress.find_by(:default => true)
+      if(default != nil)
+        redirect_to Congress.find_by(:default => true)
+      else
+        redirect_to congresses_path
+      end
+  end
+
+  def toggleDefault
+    puts @congress.name
+    if(!@congress.default?)
+      default = Congress.find_by(:default => true)
+      if(default != nil)
+        default.update_attributes(:default => false)
+      end
+    end
+    @congress.update_attributes(:default => !@congress.default?)
+    puts @congress.errors.full_messages
+    # ... update successful
+
   end
 
   # POST /congresses
@@ -76,6 +121,11 @@ class CongressesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_congress
       @congress = Congress.find(params[:id])
+    end
+
+    def set_admin_params
+      @congress = Congress.find(params[:congress_id])
+      @users = User.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

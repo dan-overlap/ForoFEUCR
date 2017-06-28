@@ -1,0 +1,74 @@
+<div class="container">
+
+	<h2>Establecer como congreso predeterminado <%= check_box_tag 'admin', @congress.id, @congress.default,data: {remote: true,
+	        						url: congress_toggleDefault_path(@congress, congress_id: @congress.id, default: true),
+	        						method: "POST"} %></h2>
+
+	<p><i>	Establecer este congreso como predeterminado permitirá llegar a él desde la dirección "raíz" del dominio,
+	 para tener acceso al administrador de congresos deberá desactivar el congreso por defecto o bien <a href=<%= congresses_path %>>visitar este enlace.</a></i></p>
+
+	 </br>
+
+	<h2>Usuarios administradores</h2>
+	<p><i>	La asignación de privilegios es global para todos los congresos.</i></p>
+	<div class="pre-scrollable">
+		<table class="table">
+			<thead>
+				<tr class ="column">
+					<th>Usuario</th>
+					<th>Correo</th>
+					<th>Administrador</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+			<tbody>	
+				<%if @users.any? %>
+	  					<% @users.each do |user| %>
+						<tr>
+					
+	  						<td><%= user.username %></td>
+	  						<td><%= user.email %></td>
+	  						<% if current_user == user%>
+	  							<td><%= check_box_tag 'admin', user.id, user.admin, disabled: true,data: {remote: true,
+	        						url: congress_adminToggle_path(@congress, user_id: user.id, admin: true),
+	        						method: "POST"} %></td>
+	        				<%else%>
+	  							<td><%= check_box_tag 'admin', user.id, user.admin,data: {remote: true,
+	        						url: congress_adminToggle_path(@congress, user_id: user.id, admin: true),
+	        						method: "POST"} %></td>
+	        				<%end%>
+	  			 
+	  					<%end%>
+					</tr>
+	  			<%end%>
+	  		</tbody>
+	  	</table>
+  	</div>
+
+  	<h2>Imágenes del banner</h2>
+  	 <%= link_to 'Agregar imagen', new_congress_banner_path(@congress), class: "btn btn-info" %>
+  	<div class="pre-scrollable">
+		<table class="table">
+			<thead>
+				<tr class ="column">
+					<th>Descripcion</th>
+					<th>Imagen</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+			<tbody>	
+				<%if @congress.banners.any? %>
+	  					<% @congress.banners.each do |banner| %>
+						<tr>
+	  						<td><%= banner.description %></td>
+	  						<td><img src=<%=banner.image.to_s%> height="50"></td>
+	  						<td><%= link_to "Ver", congress_banner_path(@congress, banner), class: "btn btn-info" %></td>  
+	  						<td><%= button_to 'Eliminar', congress_banner_path(@congress, banner), method: :delete, data: { confirm: '¿Seguro que desea eliminar esta imagen del banner?' }, class: "btn btn-danger" %></td>	 
+	  					<%end%>
+					</tr>
+	  			<%end%>
+	  		</tbody>
+	  	</table>
+  	</div>
+
+</div>

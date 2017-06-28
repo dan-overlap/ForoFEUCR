@@ -38,7 +38,10 @@
 <% end %>
 <div class="row">
   <div class="col-md-3 pull-right">
-    <%= link_to 'Agregar categoría', new_congress_category_path, class: "btn btn-info" %>
+    <%if current_user.try(:admin?)%>
+      <%= link_to 'Agregar categoría', new_congress_category_path, class: "btn btn-info" %>
+    <%end%>
+    
   </div>
 </div>
 </div>

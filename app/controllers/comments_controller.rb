@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, :set_replies, only: [:show, :edit, :update, :destroy]
+  before_action :set_parent, only: [:new]
   before_action :set_congress, :set_category, :set_presentation
   before_action :authenticate_user!, except: [:index, :show, :create]
   respond_to :js, :html, :json
@@ -7,8 +8,9 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = @presentation.comments.all
     @comment = Comment.new
+    @comments = @presentation.comments.all
+    @comment.parent_id = params[:parent_id]
   end
 
   # GET /comments/1
@@ -19,7 +21,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    
+    @comment = Comment.new
+    @comment.parent_id = params[:parent_id]
   end
 
   # GET /comments/1/edit
@@ -32,10 +35,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.author_id = current_user.id
     @comment.presentation = @presentation
+    @comment.parent_id = @parent
     #@comment.comment_id = 3
     respond_to  do |format|
       if @comment.save
-        format.html { redirect_to  [@congress, @category, @presentation], notice: 'Comment was successfully created.' }
+        format.html { redirect_to  [@congress, @category, @presentation], notice: 'Comentario creado con éxito.' }
         format.json { render :show, status: :created, location: @comment }
         format.js 
       else
@@ -77,6 +81,10 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+
+    def set_parent
+      @parent = Comment.find(params[:parent_id])
     end
 
     def set_category

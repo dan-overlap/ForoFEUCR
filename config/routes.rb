@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   
+  resources :banners
   devise_for :users, :controllers => {:registrations => "users/registrations"}
   resources :congresses do
+    get '/admin/' , to: 'congresses#admin'
+    post :adminToggle
+    post :toggleDefault
     resources :categories do
       resources :presentations do
         resources :comments
@@ -9,6 +13,7 @@ Rails.application.routes.draw do
     end
     resources :events
     resources :downloads
+    resources :banners
     resources :news do
       member do
         put 'like' => "news#vote"
@@ -21,7 +26,7 @@ Rails.application.routes.draw do
 
   get '/ForoFEUCR/', to: 'congresses#index'
 
-  root 'congresses#index'
+   root :to => 'congresses#default'
 
 
   #root 'users#index'

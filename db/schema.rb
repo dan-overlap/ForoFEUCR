@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626153650) do
+ActiveRecord::Schema.define(version: 20170628043732) do
 
   create_table "administrations", force: :cascade do |t|
     t.integer "congress_id"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20170626153650) do
     t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "banners", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer "congress_id"
+    t.index ["congress_id"], name: "index_banners_on_congress_id"
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -81,6 +93,7 @@ ActiveRecord::Schema.define(version: 20170626153650) do
     t.datetime "updated_at", null: false
     t.string "facebook_dir"
     t.string "twitter_dir"
+    t.boolean "default", default: false
     t.index ["administrators_id"], name: "index_congresses_on_administrators_id"
     t.index ["blog_id"], name: "index_congresses_on_blog_id"
     t.index ["calendar_id"], name: "index_congresses_on_calendar_id"
