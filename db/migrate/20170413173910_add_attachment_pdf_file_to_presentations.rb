@@ -1,4 +1,4 @@
-class AddAttachmentPdfFileToPresentations < ActiveRecord::Migration
+class AddAttachmentPdfFileToPresentations < ActiveRecord::Migration[5.1]
   def self.up
     change_table :presentations do |t|
       t.attachment :pdf_file
