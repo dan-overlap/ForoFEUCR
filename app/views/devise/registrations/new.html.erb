@@ -8,12 +8,6 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= f.label "Imagen de la cuenta" %><br />
-    <% f.collection_radio_buttons(:avatar, @avatars, :id, :image) do |b| %>
-        <%= b.label { b.radio_button + image_tag(b.object.image) }%>
-    <%end%>
-  </div>
 
   <div class="field">
     <%= f.label "Nombre de usuario" %><br />
