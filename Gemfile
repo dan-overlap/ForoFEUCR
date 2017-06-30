@@ -45,7 +45,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # gem bootstrap
-
+gem 'rake'
 gem 'ancestry'
 
 gem 'acts_as_votable'
