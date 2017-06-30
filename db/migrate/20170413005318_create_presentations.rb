@@ -4,7 +4,7 @@ class CreatePresentations < ActiveRecord::Migration[5.0]
       t.integer :authors
       t.string :title
       t.string :abstract
-      t.references :uploader, foreign_key: true
+      t.integer :uploader
       t.binary :document
       t.integer :status
       t.integer :discussion
