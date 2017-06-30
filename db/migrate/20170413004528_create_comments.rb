@@ -5,8 +5,8 @@ class CreateComments < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :body
       t.references :replies, foreign_key: true
-      t.references :likes, foreign_key: true
-      t.references :dislikes, foreign_key: true
+      t.integer :likes
+      t.integer :dislikes
       t.boolean :is_important
       t.boolean :is_inappropriate
       t.boolean :reviewed

@@ -7,11 +7,10 @@ class CreatePresentations < ActiveRecord::Migration[5.0]
       t.references :uploader, foreign_key: true
       t.binary :document
       t.integer :status
-      t.references :discussion, foreign_key: true
-      t.references :presenters, foreign_key: true
-      t.references :likes, foreign_key: true
-      t.references :dislikes, foreign_key: true
-
+      t.integer :discussion
+      t.integer :presenters
+      t.integer :likes
+      t.integer :dislikes
       t.timestamps
     end
   end

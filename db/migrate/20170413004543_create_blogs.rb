@@ -1,7 +1,7 @@
 class CreateBlogs < ActiveRecord::Migration[5.0]
   def change
     create_table :blogs do |t|
-      t.references :news, foreign_key: true
+      t.integer :news
 
       t.timestamps
     end

@@ -1,7 +1,7 @@
 class CreateDiscussions < ActiveRecord::Migration[5.0]
   def change
     create_table :discussions do |t|
-      t.references :comments, foreign_key: true
+      t.integer :comments
       t.integer :amount_comments
 
       t.timestamps
