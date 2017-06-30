@@ -34,8 +34,17 @@ class CongressesController < ApplicationController
 
   def check_elevation
     if (!current_user.try(:admin?))
-     redirect_to Congress.find_by(:default => true), notice: 'Debe ser administrador para ingresar.'
-    end  
+         if Congress.any?
+          default = Congress.find_by(:default => true)
+            if(default != nil)
+              redirect_to Congress.find_by(:default => true)
+            else
+              redirect_to congresses_path
+            end
+          else
+            redirect_to congresses_path
+          end
+      end  
   end
 
   # GET /congresses/1/edit
@@ -54,12 +63,16 @@ class CongressesController < ApplicationController
   end
 
   def default
-    default = Congress.find_by(:default => true)
-      if(default != nil)
-        redirect_to Congress.find_by(:default => true)
-      else
-        redirect_to congresses_path
-      end
+    if Congress.any?
+      default = Congress.find_by(:default => true)
+        if(default != nil)
+          redirect_to Congress.find_by(:default => true)
+        else
+          redirect_to congresses_path
+        end
+    else
+      redirect_to congresses_path
+    end
   end
 
   def toggleDefault
