@@ -6,7 +6,7 @@ class Presentation < ApplicationRecord
   #has_one :discussion
   has_many :presenters, :through => :expositions, :source => :user
   has_many :authors, :through => :authorships, :source => :user
-  belongs_to :category, optional: true
+  belongs_to :category
   has_many :users, :foreign_key => 'likes'
   has_many :users, :foreign_key => 'dislikes'
 
