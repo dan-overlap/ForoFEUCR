@@ -1,7 +1,7 @@
 class CreatePresentations < ActiveRecord::Migration[5.0]
   def change
     create_table :presentations do |t|
-      t.references :authors, foreign_key: true
+      t.integer :authors
       t.string :title
       t.string :abstract
       t.references :uploader, foreign_key: true
