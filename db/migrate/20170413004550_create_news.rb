@@ -4,7 +4,7 @@ class CreateNews < ActiveRecord::Migration[5.0]
       t.string :title
       t.binary :image
       t.text :content
-      t.references :author, foreign_key: true
+      t.integer :author
 
       t.timestamps
     end
