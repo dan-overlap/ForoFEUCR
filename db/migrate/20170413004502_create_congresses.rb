@@ -3,7 +3,7 @@ class CreateCongresses < ActiveRecord::Migration[5.0]
     create_table :congresses do |t|
       t.string :name
       t.string :organizer
-      t.references :responsible, foreign_key: true
+      t.integer :responsible
       t.references :calendar, foreign_key: true
       t.references :blog, foreign_key: true
       t.references :categories, foreign_key: true
