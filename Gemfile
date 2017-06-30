@@ -32,7 +32,7 @@ gem 'execjs'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'fullcalendar_engine', '~> 1.0', '>= 1.0.6'
+
 
 gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "3.1-stable"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
