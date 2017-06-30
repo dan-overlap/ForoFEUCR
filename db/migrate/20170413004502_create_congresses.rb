@@ -6,7 +6,7 @@ class CreateCongresses < ActiveRecord::Migration[5.0]
       t.integer :responsible
       t.integer :calendar
       t.integer :blog
-      t.references :categories, foreign_key: true
+      t.integer :categories
       t.references :administrators, foreign_key: true
 
       t.timestamps
