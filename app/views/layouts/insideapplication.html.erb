@@ -42,12 +42,12 @@
 					<p class="navbar-brand" style='color: white; background-color: #3fa7df'><%= @congress.name %></p>
 				</div>
 				<ul class="nav navbar-nav" style='color: white'>
-					<li><%= link_to "Inicio", congress_path(@congress) %></li>
-					<li><%= link_to "Ponencias", congress_categories_path(@congress) %></li>
-					<li><a href=<%= congress_events_path(@congress) %>>Próximos eventos</a></li>
-					<li><a href=<%= congress_downloads_path(@congress) %>>Descargas</a></li>
+					<li><%= link_to "Inicio", congress_path(@congress), style: "color: white" %></li>
+					<li><%= link_to "Ponencias", congress_categories_path(@congress), style: "color: white" %></li>
+					<li><a href=<%= congress_events_path(@congress), style: "color: white" %>>Próximos eventos</a></li>
+					<li><a href=<%= congress_downloads_path(@congress), style: "color: white" %>>Descargas</a></li>
 					<%if current_user.try(:admin?)%>
-						<li><a href=<%= congress_admin_path(@congress) %>>Administración</a></li>
+						<li><a href=<%= congress_admin_path(@congress), style: "color: white" %>>Administración</a></li>
 					<%end%>
 					<li><a href="http://www.ucr.ac.cr">UCR</a></li>
 				</ul>
@@ -155,7 +155,7 @@
 			<a href="http://www.ucr.ac.cr">UCR</a>
 		</p>
 
-		<p><%=@congress.name%> &copy; <%= Time.current.year %></p>
+		<p style='color: white'><%=@congress.name%> &copy; <%= Time.current.year %></p>
 	</div>
 
 </div>
