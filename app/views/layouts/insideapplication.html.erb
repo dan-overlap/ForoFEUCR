@@ -41,7 +41,7 @@
 				<div class="navbar-header" style="background-color: #3fa7df ">
 					<p class="navbar-brand" style='color: white; background-color: #3fa7df'><%= @congress.name %></p>
 				</div>
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav" style='color: white'>
 					<li><%= link_to "Inicio", congress_path(@congress) %></li>
 					<li><%= link_to "Ponencias", congress_categories_path(@congress) %></li>
 					<li><a href=<%= congress_events_path(@congress) %>>Próximos eventos</a></li>
