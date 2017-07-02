@@ -37,9 +37,9 @@
 	<div style='min-height: 100%'>
 
 		<nav class="navbar navbar-inverse navbar-top" style="background-color: #3fa7df ">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<p class="navbar-brand" style='color: white'><%= @congress.name %></p>
+			<div class="container-fluid" style="background-color: #3fa7df ">
+				<div class="navbar-header" style="background-color: #3fa7df ">
+					<p class="navbar-brand" style='color: white; background-color: #3fa7df'><%= @congress.name %></p>
 				</div>
 				<ul class="nav navbar-nav">
 					<li><%= link_to "Inicio", congress_path(@congress) %></li>
@@ -122,7 +122,7 @@
 
 </body>
 
-<div id="footer" class="footer-distributed footer">
+<div id="footer" class="footer-distributed footer" style="background-color: #3fa7df ">
 
 	<div class="footer-right">
 
@@ -139,7 +139,7 @@
 
 	<div class="footer-left" style="background-color: #3fa7df ">
 
-		<p class="footer-links">
+		<p class="footer-links" >
 			<a href=<%= congress_path(@congress) %>>Inicio</a>
 			·
 			<%= link_to "Ponencias", congress_categories_path(@congress) %>
