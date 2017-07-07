@@ -8,13 +8,9 @@
     </div>
     <%if current_user.try(:admin?)%>
        <div class="" style="float:right; display:inline-block">
-
-            <ul class="dropdodwn-menu">
-              	<li><%= link_to congress_event_path(@congress, event), method: :delete, data: { confirm: '¿Seguro que desea eliminar este evento?' } do %>
+              	<%= link_to congress_event_path(@congress, event), method: :delete, data: { confirm: '¿Seguro que desea eliminar este evento?' }, class: "btn btn-danger btn-xs" do %>
                     <span class="glyphicon glyphicon-remove-circle" aria-hidden="false"> Eliminar</span>
-                  <%end%>
-              	</li>
-            </ul>
+                <%end%>
         </div>
     <%end%>
 </div>
