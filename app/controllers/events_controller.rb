@@ -35,7 +35,7 @@ class EventsController < ApplicationController
     @event.congress = @congress
     respond_to do |format|
       if @event.save
-        format.html { redirect_to [@congress, @events], notice: 'Event was successfully created.' }
+        format.html { redirect_to @congress, notice: 'Evento creado con éxito.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
