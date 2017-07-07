@@ -4,6 +4,8 @@
 <head>
 	<title><%= @congress.name %></title>
 
+	<link rel="shortcut icon" href=<%=@congress.favicon.to_s%> />
+
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.2/rails.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -39,7 +41,8 @@
 		<nav class="navbar navbar-inverse navbar-top" style="background-color: #3fa7df ">
 			<div class="container-fluid" style="background-color: #3fa7df ">
 				<div class="navbar-header" style="background-color: #3fa7df ">
-					<p class="navbar-brand" style='color: white; background-color: #3fa7df'><%= @congress.name %></p>
+					<img src=<%=@congress.logo.to_s%>  class="navbar-brand" style='color: white; background-color: #3fa7df' alt=<%= @congress.name %> >
+
 				</div>
 				<ul class="nav navbar-nav" >
 					<li><%= link_to "Inicio", congress_path(@congress), style: "color: white" %></li>
@@ -49,6 +52,7 @@
 					<%if current_user.try(:admin?)%>
 						<li><a href=<%= congress_admin_path(@congress) %>  style= "color: white">Administración</a></li>
 					<%end%>
+					<li><a href="http://feucr.ucr.ac.cr/"  style= "color: white">FEUCR</a></li>
 					<li><a href="http://www.ucr.ac.cr"  style= "color: white">UCR</a></li>
 				</ul>
 				<ul class="nav navbar-nav pull-right">
@@ -61,7 +65,7 @@
 				</ul>
 			</div>
 		</nav>
-
+		
 		<!-Banner!>
 
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -152,6 +156,8 @@
 				<a href=<%= congress_admin_path(@congress) %>>Administración</a>
 				·
 			<%end%>	
+			<a href="http://feucr.ucr.ac.cr/">FEUCR</a>
+			·
 			<a href="http://www.ucr.ac.cr">UCR</a>
 		</p>
 

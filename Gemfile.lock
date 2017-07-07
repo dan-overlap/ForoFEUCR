@@ -243,7 +243,10 @@ DEPENDENCIES
   rails-ujs
   rails3_serve_static_assets!
   rails_12factor
+<<<<<<< HEAD
   rails_log_stdout!
+=======
+>>>>>>> 31e4ec21f6e294c06bd1eadfac87f97c7a951870
   rake
   sass-rails (~> 5.0)
   sqlite3

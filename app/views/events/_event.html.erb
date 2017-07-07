@@ -6,4 +6,15 @@
         <h4 class="media-heading"><%=event.name%> <small><i>Fecha de Inicio: <%=event.start_date %></i></small></h4>
         <p><%=event.description%></p>
     </div>
+    <%if current_user.try(:admin?)%>
+       <div class="" style="float:right; display:inline-block">
+
+            <ul class="dropdodwn-menu">
+              	<li><%= link_to congress_event_path(@congress, event), method: :delete, data: { confirm: '¿Seguro que desea eliminar este evento?' } do %>
+                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="false"> Eliminar</span>
+                  <%end%>
+              	</li>
+            </ul>
+        </div>
+    <%end%>
 </div>

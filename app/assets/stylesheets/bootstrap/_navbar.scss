@@ -11,14 +11,14 @@
 .navbar {
   position: relative;
   min-height: $navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
-  margin-bottom: $navbar-margin-bottom;
+  margin-bottom: 0;
   border: 1px solid transparent;
 
   // Prevent floats from breaking the navbar
   @include clearfix;
 
   @media (min-width: $grid-float-breakpoint) {
-    border-radius: $navbar-border-radius;
+    border-radius: 0;
   }
 }
 
@@ -165,7 +165,7 @@
   padding: $navbar-padding-vertical $navbar-padding-horizontal;
   font-size: $font-size-large;
   line-height: $line-height-computed;
-  height: $navbar-height;
+  height: $navbar-height*1.3;
 
   &:hover,
   &:focus {
@@ -231,6 +231,7 @@
 
 .navbar-nav {
   margin: ($navbar-padding-vertical / 2) (-$navbar-padding-horizontal);
+  vertical-align: center;
 
   > li > a {
     padding-top:    10px;
@@ -270,7 +271,7 @@
     > li {
       float: left;
       > a {
-        padding-top:    $navbar-padding-vertical;
+        padding-top:    $navbar-padding-vertical*1.5;
         padding-bottom: $navbar-padding-vertical;
       }
     }
@@ -396,7 +397,7 @@
 // Default navbar
 .navbar-default {
   background-color: $navbar-default-bg;
-  border-color: $navbar-default-border;
+  border-color: #3fa7df;
 
   .navbar-brand {
     color: $navbar-default-brand-color;
@@ -530,7 +531,7 @@
 
 .navbar-inverse {
   background-color: $navbar-inverse-bg;
-  border-color: $navbar-inverse-border;
+  border-color: #3fa7df;
 
   .navbar-brand {
     color: $navbar-inverse-brand-color;

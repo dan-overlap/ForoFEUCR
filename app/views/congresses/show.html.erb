@@ -10,6 +10,10 @@
 <div class="container">
 
   <div class="col-6 col-md-4">
+    <button data-toggle="collapse" data-target="#about" class= "btn btn-info btn-lg btn-block"><i class="glyphicon glyphicon-blackboard"></i> Acerca del congreso</button>
+  </div>
+
+  <div class="col-6 col-md-4">
     <%= link_to congress_categories_path(@congress), {class: "btn btn-info btn-lg btn-block"} do %>
     <i class="glyphicon glyphicon-list-alt"></i> Temas y ponencias del Congreso
     <% end %>
@@ -21,12 +25,21 @@
     <% end %>
   </div>
 
-  <div class="col-6 col-md-4">
-    <%= link_to congress_categories_path(@congress), {class: "btn btn-info btn-lg btn-block"} do %>
-    <i class="glyphicon glyphicon-blackboard"></i> Acerca del congreso
-    <% end %>
+  
+</div>
+<div class="Container">
+  <div id="about" class="collapse">
+    <div style="display:inline-block; vertical-align:top">
+      <% if @congress.logo != nil %>
+        <img src=<%=@congress.logo.to_s%> style="max-height: 100px ">
+      <%end%>
+    </div>
+    <div style="display:inline-block; vertical-align:middle;">
+      </br>
+      </br>
+      <p><strong> <%= @congress.description %> </strong></p>
+    </div>
   </div>
-
   
 </div>
 

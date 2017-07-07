@@ -19,25 +19,21 @@
   </div>
 
   <div class="col-xs-6">
-    <%= f.label :organizer %>
-    <%= f.text_field :organizer %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
   </div>
 
-  
 
-  <div class="col-xs-6">
-    <%= f.label :calendar_id %>
-    <%= f.text_field :calendar_id %>
+  <div class="form-group">
+    <%= f.label "Logo" %>
+    <%= f.file_field :logo %>
+    
   </div>
 
-  <div class="col-xs-6">
-    <%= f.label :blog_id %>
-    <%= f.text_field :blog_id %>
-  </div>
-
-  <div class="col-xs-6">
-    <%= f.label :categories_id %>
-    <%= f.text_field :categories_id %>
+  <div class="form-group">
+    <%= f.label "Icono" %>
+    <%= f.file_field :favicon %>
+    
   </div>
 
 
