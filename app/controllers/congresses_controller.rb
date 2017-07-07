@@ -1,7 +1,7 @@
 class CongressesController < ApplicationController
   before_action :set_congress, only: [:show, :edit, :update, :destroy]
   before_action :set_admin_params, only: [:toggleDefault,:admin]
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :default]
   before_action :check_elevation, only: [:index, :set_admin_params,:admin, :toggleDefault, :adminToggle]
   layout "congresses"
   # GET /congresses
