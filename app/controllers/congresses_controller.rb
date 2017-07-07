@@ -33,18 +33,7 @@ class CongressesController < ApplicationController
   end
 
   def check_elevation
-    if (!current_user.try(:admin?))
-         if Congress.any?
-          default = Congress.find_by(:default => true)
-            if(default != nil)
-              redirect_to Congress.find_by(:default => true)
-            else
-              redirect_to congresses_path
-            end
-          else
-            redirect_to congresses_path
-          end
-      end  
+    redirect_to root_path, notice: 'Necesita permisos especiales para realizar esta acción.' unless current_user.admin? 
   end
 
   # GET /congresses/1/edit
@@ -143,6 +132,6 @@ class CongressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def congress_params
-      params.require(:congress).permit(:name, :organizer, :responsible_id , :calendar_id, :blog_id, :categories_id, :facebook_dir, :twitter_dir, :administrator_ids => [])
+      params.require(:congress).permit(:name, :description, :categories_id, :facebook_dir, :twitter_dir,:favicon, :logo, :administrator_ids => [])
     end
 end

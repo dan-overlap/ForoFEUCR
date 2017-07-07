@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628043732) do
+ActiveRecord::Schema.define(version: 20170707014041) do
 
   create_table "administrations", force: :cascade do |t|
     t.integer "congress_id"
@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(version: 20170628043732) do
     t.string "facebook_dir"
     t.string "twitter_dir"
     t.boolean "default", default: false
+    t.string "logo_file_name"
+    t.string "logo_content_type"
+    t.integer "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string "favicon_file_name"
+    t.string "favicon_content_type"
+    t.integer "favicon_file_size"
+    t.datetime "favicon_updated_at"
+    t.text "description"
     t.index ["administrators_id"], name: "index_congresses_on_administrators_id"
     t.index ["blog_id"], name: "index_congresses_on_blog_id"
     t.index ["calendar_id"], name: "index_congresses_on_calendar_id"
