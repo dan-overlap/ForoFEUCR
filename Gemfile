@@ -50,6 +50,8 @@ gem 'ancestry'
 
 gem 'acts_as_votable'
 
+gem 'jquery-minicolors-rails', '~> 2.2', '>= 2.2.3.0'
+
 gem 'bootstrap', '~> 4.0.0.alpha6'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -68,9 +70,14 @@ group :development do
   gem 'sqlite3'
 end
 
+group :assets do
+  gem 'bootstrap-colorpicker-rails', :require => 'bootstrap-colorpicker-rails',
+                          :git => 'git://github.com/alessani/bootstrap-colorpicker-rails.git'
+end
+
 group :production do
 
-	gem 'pg'
+	gem 'sqlite3'
 	gem 'rails_12factor'
 end
 

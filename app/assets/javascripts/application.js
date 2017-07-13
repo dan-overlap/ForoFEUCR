@@ -11,6 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= requier jquery-ui
+//= require jquery.minicolors
+//= require bootstrap-colorpicker
 //= require turbolinks
 //= require_tree .
 

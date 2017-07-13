@@ -4,6 +4,9 @@
   <head>
     <title>ForoFEUCR</title>
     <%= csrf_meta_tags %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.1/js/bootstrap-colorpicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.1/css/bootstrap-colorpicker.css" />
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -37,4 +40,10 @@
     </div>  
     <%= yield %>
   </body>
+
+    <script>
+    $(function() {
+        $('#congress_color').colorpicker();
+    });
+</script>
 </html>
