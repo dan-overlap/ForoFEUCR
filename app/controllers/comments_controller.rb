@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, :set_replies, only: [:show, :edit, :update, :destroy]
   before_action :set_parent, only: [:new]
   before_action :set_congress, :set_category, :set_presentation
-  before_action :authenticate_user!, except: [:index, :show, :create]
+  before_action :authenticate_user!, except: [:index, :show]
   respond_to :js, :html, :json
   layout "insideapplication"
   # GET /comments
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/new
-  def new
+  def new_comment
     @comment = Comment.new
     @comment.parent_id = params[:parent_id]
   end
@@ -35,7 +35,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.author_id = current_user.id
     @comment.presentation = @presentation
-    @comment.parent_id = @parent
     #@comment.comment_id = 3
     respond_to  do |format|
       if @comment.save

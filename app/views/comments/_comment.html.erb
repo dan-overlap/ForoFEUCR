@@ -5,7 +5,15 @@
           <div class="media-body">
             <h4 class="media-heading"><%=User.find(comment.author_id).username%> <small><i>Publicado: <%=comment.created_at.strftime('%F %T') %></i></small></h4>
             <p><%=comment.body%></p>
-            <%= link_to "Responder", new_congress_category_presentation_comment_path(@congress, @category, @presentation, :parent_id => comment), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "#mynewcomment" %>
+          
+
+            <%= link_to "Reply",
+              new_comment_congress_category_presentation_comment_path(
+              @congress, @category, @presentation,
+              parent_id: comment, id: comment), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "#mynewcomment", :parent_id => comment %>
+
+
+          
             <% replies = Comment.where(ancestry: comment) %>
             <% if replies.any? %>
               <% replies.each do |reply| %>

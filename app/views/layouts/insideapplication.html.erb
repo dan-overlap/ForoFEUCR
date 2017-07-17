@@ -42,13 +42,13 @@
 
 	<div style='min-height: 100%'>
 
-		<nav class="navbar navbar-inverse navbar-top" style="background-color: #3fa7df ">
+		<nav class="navbar navbar-inverse navbar-top align-middle" style="vertical-align: middle ;background-color: #3fa7df ">
 			<div class="container-fluid" style="background-color: #3fa7df ">
 				<div class="navbar-header" style="background-color: #3fa7df ">
-					<img src=<%=@congress.logo.to_s%>  class="navbar-brand" style='color: white; background-color: #3fa7df' alt=<%= @congress.name %> >
+					<img src=<%=@congress.logo.to_s%>  class="nabar-brand" style='max-width: 200px; max-height: 150px; padding: 5px; color: white; background-color: #3fa7df' alt=<%= @congress.name %> >
 
 				</div>
-				<ul class="nav navbar-nav" >
+				<ul class="nav navbar-nav align-middle" style="padding-top: 15px; padding-bottom: 15px" >
 					<li><%= link_to "Inicio", congress_path(@congress), style: "color: white" %></li>
 					<li><%= link_to "Ponencias", congress_categories_path(@congress), style: "color: white" %></li>
 					<li><a href=<%= congress_events_path(@congress) %>  style= "color: white">Próximos eventos</a></li>
@@ -59,7 +59,7 @@
 					<li><a href="http://feucr.ucr.ac.cr/"  style= "color: white">FEUCR</a></li>
 					<li><a href="http://www.ucr.ac.cr"  style= "color: white">UCR</a></li>
 				</ul>
-				<ul class="nav navbar-nav pull-right">
+				<ul class="nav navbar-nav pull-right" style="padding-top: 15px; padding-bottom: 15px">
 					<% if !user_signed_in? %>
 					<li><%= link_to "Registrarse", new_user_registration_path, class: "pull-right", style: "color: white" %></li>
 					<li><%= link_to "Iniciar sesión", new_user_session_path, style: "color: white" %></li>
@@ -145,9 +145,23 @@
 
 	</div>
 
+	<div class="footer-right align-top"  style= "padding-right: 20px;max-height: 80%;text-align: center">
+        <div class= "align-top">
+          <img src="<%=image_url("feucr.png")%>" style=" max-width:  110%" >
+        </div>
+
+       </div>
+
+      <div class="footer-right align-top"  style= "padding-right: 20px;max-height: 80%;text-align: center">
+        <div class= "align-top">
+          <img src="<%=image_url("ucr.png")%>" style=" max-width:  110%" >
+        </div>
+
+       </div>
+
 	<div class="footer-left" style="background-color: #3fa7df ">
 
-		<p class="footer-links" >
+		<p class="footer-links" style="padding-top: 25px">
 			<a href=<%= congress_path(@congress) %>>Inicio</a>
 			·
 			<%= link_to "Ponencias", congress_categories_path(@congress) %>

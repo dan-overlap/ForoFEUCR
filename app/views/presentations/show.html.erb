@@ -1,57 +1,4 @@
-<!-- Inicio de M odal-->
-
-        <%= form_for([@congress, @category, @presentation, @comment], remote: true) do |f| %>
-          <div class="modal fade" id="mynewcomment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Post</h4>
-                </div>
-
-                <div class="modal-body">
-
-                  <%= f.hidden_field :parent_id %>
-                  <% if @comment.errors.any? %>
-                    <div id="error_explanation">
-                      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-                      <ul>
-                      <% @comment.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                      <% end %>
-                      </ul>
-                    </div>
-                  <% end %>
-
-                  <form>
-
-                  <div class="field">
-                    <%= "Título" %>
-                    <%= f.text_field :title, class: "form-control comment_title" %>
-                  </div>
-
-                  <div class="field">
-                    <%= "Comentario" %>
-                    <%= f.text_area :body, class: "form-control comment_content" %>
-                  </div>
-
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal" id="mynewpostclose">Cerrar</button>
-                  <%= submit_tag "Comentar", class: "btn btn-primary" %>
-                </div>
-
-                </form>
-                
-              </div>
-            </div>
-          </div>
-        <% end %>
-
-      <!--Fin de M odal -->
+<div class="modal fade" id="mynewcomment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 <div class="container-fluid">
 
@@ -67,19 +14,22 @@
 
 
       <h2><%="Foro de discusion"%></h2>
-      <button type="button" class="btn btn-default btn-lg pull-right" data-toggle="modal" data-target="#mynewcomment" data-no-turbolink="true">
-            Comentar
-      </button>
+      <%= link_to "Comentar",
+              new_comment_congress_category_presentation_comment_path(
+              @congress, @category, @presentation,
+              parent_id: nil), :class => "btn btn-default btn-lg pull-right", :remote => true, "data-toggle" => "modal", "data-target" => "#mynewcomment", :parent_id => nil %>
+
       </br>
       </br>
       </br>
       <div id= "container_comments">
-        <%= render @presentation.comments.where(ancestry: nil) %>
+        <%= render @presentation.comments.where(ancestry: nil), locals: { congress: @congress, category: @category, presentation: @presentation } %>
       </div>
       <%if @presentation.comments.count > 2%>
-        <button type="button" class="btn btn-default btn-lg pull-right" data-toggle="modal" data-target="#mynewcomment" data-no-turbolink="true">
-            Comentar
-        </button>
+        <%= link_to "Comentar",
+              new_comment_congress_category_presentation_comment_path(
+              @congress, @category, @presentation,
+              parent_id: nil), :class => "btn btn-default btn-lg pull-right", :remote => true, "data-toggle" => "modal", "data-target" => "#mynewcomment", :parent_id => nil %>
        <%end%> 
     </div>
   </div>

@@ -1,6 +1,11 @@
 $("#mynewcomment").modal('hide');
 $(".comment_title").val('');
 $(".comment_content").val('');
-$("#container_comments").append('<%= j render @comment %>');
-$("#comment_<%= @comment.id %>").hide().fadeIn(1000);
+<%if @comment.parent == nil%>
+	$("#container_comments").append('<%= j render @comment, params: { id: @comment.id } %>');
+	$("#comment_<%= @comment.id %>").hide().fadeIn(1000);
+<%else%>
+	<%@parent = Comment.find(@comment.parent_id)%>
+	$("#comment_<%= @parent.id %>").replaceWith('<%= j render @parent, locals: { congress: @congress, category: @category, presentation: @presentation } %>');
+<%end%>
   

@@ -72,11 +72,7 @@ class NewsController < ApplicationController
     end
 
     respond_to do |f|
-      f.html do
-                flash[:success] = "Like Updated!"
-                redirect_to :back
-            end
-      f.js
+      f.js       
     end
 
   end

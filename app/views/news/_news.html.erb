@@ -46,9 +46,9 @@
               <!-- <button type="button" class="liked-btn"><span class="glyphicon glyphicon-thumbs-up"></span></button> -->
               <div>
                 <span><i class="glyphicon glyphicon-thumbs-up"></i></span>
+                <span id="count_<%= news.id %>" class='likes-count'> <%=news.get_upvotes.size %> </span>
               </div>
               <% end %>
-              <span id="count_<%= news.id %>" class='likes-count'> <%=news.get_upvotes.size %> </span>
             </div>                 
           </div>
         </div>

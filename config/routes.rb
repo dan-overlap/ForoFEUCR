@@ -8,7 +8,14 @@ Rails.application.routes.draw do
     post :toggleDefault
     resources :categories do
       resources :presentations do
-        resources :comments
+        resources :comments do
+          member do
+            get 'new_comment' => "comments#new_comment"
+          end
+        end
+        member do
+        get 'setParent' => "presentations#set_parent"
+      end
       end
     end
     resources :events

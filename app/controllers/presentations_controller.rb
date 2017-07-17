@@ -2,6 +2,7 @@ class PresentationsController < ApplicationController
   before_action :set_presentation, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_congress, :set_category, :set_users
+  respond_to :js, :html, :json
   layout "insideapplication"
   # GET /presentations
   # GET /presentations.json
@@ -69,7 +70,12 @@ class PresentationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_presentation
-      @presentation = Presentation.find(params[:id])
+      if params.has_key?(:presentation_id)
+              @presentation = Presentation.find(params[:presentation_id])
+      else
+        @presentation = Presentation.find(params[:id])
+      end
+
     end
 
     def set_category
@@ -78,6 +84,13 @@ class PresentationsController < ApplicationController
 
     def set_congress
       @congress = Congress.find(params[:congress_id])
+    end
+
+    def set_parent
+      @comment.parent_id = params[:parent_id]
+      respond_to do |f|
+        f.js       
+      end
     end
 
     def set_users

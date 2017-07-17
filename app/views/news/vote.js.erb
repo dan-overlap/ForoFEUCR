@@ -4,4 +4,4 @@
 	$('.liked-btn').removeClass('liked')
 <% end %>
 
-$('#count_<%= news.id %>').html("<%=@news.get_upvotes.size %>")
+$('#count_<%= @news.id %>').html("<%=@news.get_upvotes.size %>")
