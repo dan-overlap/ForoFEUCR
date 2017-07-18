@@ -1,8 +1,8 @@
 <div class="container">
-	<h1>Editing Congress</h1>
+	<h1>Edición del Congreso</h1>
 
 	<%= render 'form', congress: @congress %>
 
-	<%= link_to 'Show', @congress %> |
-	<%= link_to 'Back', congresses_path %>
+	<%= link_to 'Ir a', @congress, class: "btn btn-info" %> |
+	<%= link_to 'Volver', congresses_path, class: "btn btn-info" %>
 </div>

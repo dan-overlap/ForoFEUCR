@@ -1,8 +1,7 @@
 <div class="container">
-	<h1>Editing News</h1>
+	<h1>Edición de Noticia</h1>
 
 	<%= render 'form', news: @news %>
 
-	<%= link_to 'Ir a', congress_news_path(@congress, @news) %> |
-	<%= link_to 'Back', congress_path(@congress) %>
+	<%= link_to 'Volver', congress_path(@congress), class: "btn btn-default"  %>
 </div>

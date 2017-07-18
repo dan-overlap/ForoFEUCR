@@ -1,9 +1,11 @@
 <div class="container">
-	<h1>Nueva Ponencia</h1>
+	<h1>Nueva Ponencia </h1>
+	<p class="pull-right"><b><i><%= ("Subido por " + current_user.username) %></i></b></p>
+		
 
 	<%= render 'form', presentation: @presentation %>
-	<div class = "field">
-		<B><I><%= ("Subido por " + current_user.username) %></I></B>
-	</div>
-	<%= link_to 'Volver', congress_category_presentations_path, class: "btn btn-info" %>
+
+	<%= link_to 'Volver', congress_category_path(@category), class: "btn btn-info" %>
+
+
 </div>

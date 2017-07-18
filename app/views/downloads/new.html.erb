@@ -1,5 +1,7 @@
-<h1>Nuevo Documento</h1>
+<div class="container">
+	<h1>Nuevo Documento</h1>
 
-<%= render 'form', download: @download %>
+	<%= render 'form', download: @download %>
 
-<%= link_to 'Back', congress_downloads_path(@congress), class: "btn btn-info" %>
+	<%= link_to 'Volver', congress_downloads_path(@congress), class: "btn btn-default" %>
+</div>

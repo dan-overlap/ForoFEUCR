@@ -1,12 +1,12 @@
 <div class="container">
 
-	<h1>Editar Categoria</h1>
+	<h1>Edición de Categoria</h1>
 
 
 	<%= render 'form', category: @category %>
 
 
-	<%= link_to 'Ir a', congress_category_path(params[:congress_id], @category) %> |
-	<%= link_to 'Volver', congress_categories_path %>
+	<%= link_to 'Ir a', congress_category_path(params[:congress_id], @category), class: "btn btn-default"   %> |
+	<%= link_to 'Volver', congress_categories_path, class: "btn btn-default"   %>
 
 </div>
