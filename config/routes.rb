@@ -11,6 +11,9 @@ Rails.application.routes.draw do
         resources :comments do
           member do
             get 'new_comment' => "comments#new_comment"
+            put 'toggle_important' => "comments#toggle_important"
+            put 'toggle_inappropriate' => "comments#toggle_inappropriate"
+            put 'toggle_denounce' => "comments#toggle_denounce"
           end
         end
         member do

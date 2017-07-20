@@ -1,29 +1,151 @@
-<div class="media" id="comment_<%= comment.id %>">
-          <div class="media-left">
-            <img src="<%= image_path("comment.png")%>" class="media-object" style="width:45px">
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading"><%=User.find(comment.author_id).username%> <small><i>Publicado: <%=comment.created_at.strftime('%F %T') %></i></small></h4>
-            <p><%=comment.body%></p>
-          
+<%  classes = (comment.is_important ? ' important ' : ' comment ') %>
+<%if current_user.try(:admin?)%>
+  <% if comment.denounced_by != nil %>
+    <% classes = classes + (comment.is_inappropriate ? ' inappropiate ' : ' denounced ')%>
+  <%end%>
+<%end%>
 
-            <%= link_to "Reply",
+
+<div class="media <%= classes %>" id="comment_<%= comment.id %>">
+  <div class="media-left">
+    <img src="<%= image_path("comment.png")%>" class="media-object" style="width:45px">
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><%=User.find(comment.author_id).username%> <small><i>Publicado: <%=comment.created_at.strftime('%F %T') %></i></small></h4>
+      <p><%=comment.body%></p>
+            
+
+  <div>
+    <%if current_user != nil%>
+      <%if current_user.user_id == @presentation.presenter%>
+        <div class= "pull-right">
+          <%= link_to toggle_important_congress_category_presentation_comment_path(@congress,@category,@presentation, comment), id: "important-btn", :method => :put, remote: true do %>
+            <div>
+              <span><p>&nbsp <i class="glyphicon glyphicon-star-empty"> </i></p></span>
+            </div>
+          <% end %>
+        </div>
+      <%end%>
+    <%end%>
+
+            <!--Denunciar u ocultar  -->
+
+            <%if current_user.try(:admin?)%>
+
+              <% if comment.denounced_by != nil%>
+
+                <%if comment.denounced_by.to_s == current_user.id.to_s and !comment.is_inappropriate %>
+                <!--Denunciado por diferente usuario-->
+                  <div class= "pull-right">
+                    <%= link_to toggle_denounce_congress_category_presentation_comment_path(@congress,@category,@presentation, comment),class: "btn btn-sm", id: "important-btn", :method => :put, remote: true do %>
+                        <span class="glyphicon glyphicon-ban-circle"></span><p id="denounce_<%=comment.id%>">Quitar denuncia</p>
+                    <% end %>
+                  </div>
+                  <!--FIN Denunciado por diferente usuario-->
+                <%else%>
+                  <!--Denunciado por usuario-->
+                  <div class= "pull-right">
+                    <%= link_to toggle_inappropriate_congress_category_presentation_comment_path(@congress,@category,@presentation, comment),class: "btn btn-sm", id: "denounce-btn", :method => :put, remote: true do %>
+                        <span class="glyphicon glyphicon-ban-circle"></span><p id="denounce_<%=comment.id%>">Ocultar comentario</p>
+                    <% end %>
+                  </div>
+                  <!-- FIN Denunciado por usuario-->
+                <%end%>
+
+              <%else%>
+                  <!-- Sin Denuncia-->
+                  <div class= "pull-right">
+                    <%= link_to toggle_denounce_congress_category_presentation_comment_path(@congress,@category,@presentation, comment),class: "btn btn-sm", id: "denounce-btn", :method => :put, remote: true do %>
+                        <span class="glyphicon glyphicon-ban-circle"></span><p id="denounce_<%=comment.id%>">Denunciar</p>
+                    <% end %>
+                  </div>
+                  <!-- FIN sin Denuncia-->
+              <%end%>
+            <%end%>
+
+            <!--FIN Denunciar u ocultar  -->
+          
+  </div>          
+            <%= link_to "Responder",
               new_comment_congress_category_presentation_comment_path(
               @congress, @category, @presentation,
               parent_id: comment, id: comment), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "#mynewcomment", :parent_id => comment %>
 
 
-          
-            <% replies = Comment.where(ancestry: comment) %>
+            <%if current_user.try(:admin?)%>
+              <% replies = Comment.where(ancestry: comment) %>
+            <%else%>
+              <% replies = Comment.where(ancestry: comment).where(is_inappropriate:  false) %>
+            <%end%>  
             <% if replies.any? %>
               <% replies.each do |reply| %>
-                <div class="media">
+
+                <%  classes = (reply.is_important ? ' important ' : ' comment ')  %>
+                <%if current_user.try(:admin?)%>
+
+                  <% if reply.denounced_by != nil %>
+                    <% classes = classes + (reply.is_inappropriate ? ' inappropiate ' : ' denounced ')%>
+                  <%end%>
+                <%end%>
+
+                <div class="media <%= classes %>" style="min-width: 100%" id="comment_<%= reply.id %>">
                   <div class="media-left">
                     <img src="<%= image_path("reply.png")%>" class="media-object" style="width:45px">
                   </div>
                   <div class="media-body">
                     <h4 class="media-heading"><%=User.find(reply.author_id).username%> <small><i>Publicado: <%=reply.created_at.strftime('%F %T') %></i></small></h4>
                     <p><%=reply.body%></p>
+
+        <div style="min-width: 100%">
+          <%if current_user != nil%>
+            <%if current_user.user_id == @presentation.presenter%>
+              <div class= "pull-right">
+                <%= link_to toggle_important_congress_category_presentation_comment_path(@congress,@category,@presentation, reply), id: "important-btn", :method => :put, remote: true do %>
+                  <div>
+                    <span><p>&nbsp <i class="glyphicon glyphicon-star-empty"> </i></p></span>
+                  </div>
+                  <% end %>
+              </div>
+            <%end%>
+          <%end%>
+
+            <!--Denunciar u ocultar  -->
+
+            <%if current_user.try(:admin?)%>
+
+              <% if reply.denounced_by != nil%>
+
+                <%if reply.denounced_by.to_s == current_user.id.to_s and !reply.is_inappropriate %>
+                <!--Denunciado por diferente usuario-->
+                  <div class= "pull-right">
+                    <%= link_to toggle_denounce_congress_category_presentation_comment_path(@congress,@category,@presentation, reply),class: "btn btn-sm", id: "important-btn", :method => :put, remote: true do %>
+                        <span class="glyphicon glyphicon-ban-circle"></span><p id="denounce_<%=reply.id%>">Quitar denuncia</p>
+                    <% end %>
+                  </div>
+                  <!--FIN Denunciado por diferente usuario-->
+                <%else%>
+                  <!--Denunciado por usuario-->
+                  <div class= "pull-right">
+                    <%= link_to toggle_inappropriate_congress_category_presentation_comment_path(@congress,@category,@presentation, reply),class: "btn btn-sm", id: "denounce-btn", :method => :put, remote: true do %>
+                        <span class="glyphicon glyphicon-ban-circle"></span><p id="denounce_<%=reply.id%>">Ocultar comentario</p>
+                    <% end %>
+                  </div>
+                  <!-- FIN Denunciado por usuario-->
+                <%end%>
+
+              <%else%>
+                  <!-- Sin Denuncia-->
+                  <div class= "pull-right">
+                    <%= link_to toggle_denounce_congress_category_presentation_comment_path(@congress,@category,@presentation, reply),class: "btn btn-sm", id: "denounce-btn", :method => :put, remote: true do %>
+                        <span class="glyphicon glyphicon-ban-circle"></span><p id="denounce_<%=reply.id%>">Denunciar</p>
+                    <% end %>
+                  </div>
+                  <!-- FIN sin Denuncia-->
+              <%end%>
+            <%end%>
+
+            <!--FIN Denunciar u ocultar  -->
+      </div>
                   </div>
                 </div>
               <%end%>

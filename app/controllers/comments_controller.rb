@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, :set_replies, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, :set_replies, only: [:toggle_important, :toggle_inappropriate,:toggle_denounce,:show, :edit, :update, :destroy]
   before_action :set_parent, only: [:new]
   before_action :set_congress, :set_category, :set_presentation
   before_action :authenticate_user!, except: [:index, :show]
@@ -21,8 +21,33 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new_comment
+    if !user_signed_in?
+      format.html { redirect_to  [@congress, @category, @presentation], notice: 'Debe iniciar sesión para comentar' }
+    end
     @comment = Comment.new
     @comment.parent_id = params[:parent_id]
+  end
+
+  def toggle_important
+    @comment.update_attributes(:is_important => !@comment.is_important?)
+    puts @congress.errors.full_messages
+    # ... update successful
+  end
+
+  def toggle_inappropriate
+    @comment.update_attributes(:is_inappropriate => !@comment.is_inappropriate?)
+    puts @congress.errors.full_messages
+    # ... update successful
+  end
+
+  def toggle_denounce
+    if @comment.denounced_by == nil
+      @comment.update_attributes(:denounced_by => current_user.id)
+    else
+      @comment.update_attributes(:denounced_by => nil)
+    end
+    puts @congress.errors.full_messages
+    # ... update successful
   end
 
   # GET /comments/1/edit

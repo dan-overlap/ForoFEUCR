@@ -1,0 +1,2 @@
+$("#comment_<%= @comment.id %>").toggleClass('inappropriate denounced');
+$("#denounce_<%=@comment.id%>").text($("#denounce_<%=@comment.id%>").text() == "Ocultar comentario" ? "Mostrar comentario" : "Ocultar comentario");

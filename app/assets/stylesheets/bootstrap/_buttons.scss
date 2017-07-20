@@ -88,6 +88,34 @@ a.btn {
   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
 
+.important {
+    border-radius: 15px 50px;
+    background: rgba(212, 175, 55, 0.3);
+    padding: 20px; 
+
+}
+
+.comment {
+    border-radius: 15px 50px;
+    background: rgba(240, 240, 245, 0.3);
+    padding: 20px; 
+
+}
+
+.denounced {
+    border-color: yellow;
+    background: rgb(255, 165, 0) !important;;
+    padding: 20px; 
+
+}
+
+.inappropriate {
+    border-radius: 15px 50px;
+    background: rgb(219, 88, 88) !important;
+    padding: 20px; 
+
+}
+
 
 // Link buttons
 // -------------------------

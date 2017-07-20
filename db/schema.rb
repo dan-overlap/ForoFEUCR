@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713032724) do
+ActiveRecord::Schema.define(version: 20170720175920) do
 
   create_table "administrations", force: :cascade do |t|
     t.integer "congress_id"
@@ -66,13 +66,14 @@ ActiveRecord::Schema.define(version: 20170713032724) do
     t.integer "likes_id"
     t.integer "dislikes_id"
     t.boolean "is_important"
-    t.boolean "is_inappropriate"
+    t.boolean "is_inappropriate", default: false
     t.boolean "reviewed"
     t.boolean "denounced"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "presentation_id"
     t.string "ancestry"
+    t.string "denounced_by"
     t.index ["ancestry"], name: "index_comments_on_ancestry"
     t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["dislikes_id"], name: "index_comments_on_dislikes_id"
@@ -201,6 +202,7 @@ ActiveRecord::Schema.define(version: 20170713032724) do
     t.integer "pdf_file_file_size"
     t.datetime "pdf_file_updated_at"
     t.integer "category_id"
+    t.string "presenter", default: "000000", null: false
     t.index ["authors_id"], name: "index_presentations_on_authors_id"
     t.index ["category_id"], name: "index_presentations_on_category_id"
     t.index ["discussion_id"], name: "index_presentations_on_discussion_id"

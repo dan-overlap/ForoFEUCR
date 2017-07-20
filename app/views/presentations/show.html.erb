@@ -7,29 +7,40 @@
   <div class="row">
     <div class="col-xs-9">
       
-        <iframe src=<%=@presentation.pdf_file.to_s %> style="width:100%; height:1200px;" frameborder="0" ></iframe>
+        <iframe src=<%=@presentation.pdf_file.to_s %> style="min-width:400px;width:100%; height:1200px;" frameborder="0" ></iframe>
       
     </div>
-    <div class="col-xs-3 pull-right" >
+    <div class="col-xs-3  well" style="min-width:400px;height:1200px;" >
 
 
       <h2><%="Foro de discusion"%></h2>
-      <%= link_to "Comentar",
-              new_comment_congress_category_presentation_comment_path(
-              @congress, @category, @presentation,
-              parent_id: nil), :class => "btn btn-default btn-lg pull-right", :remote => true, "data-toggle" => "modal", "data-target" => "#mynewcomment", :parent_id => nil %>
+      <% if current_user != nil %>
+         <%= link_to "Comentar",
+                new_comment_congress_category_presentation_comment_path(
+                @congress, @category, @presentation,
+                parent_id: nil), :class => "btn btn-default pull-right", :remote => true, "data-toggle" => "modal", "data-target" => "#mynewcomment", :parent_id => nil %>
 
-      </br>
-      </br>
-      </br>
-      <div id= "container_comments">
-        <%= render @presentation.comments.where(ancestry: nil), locals: { congress: @congress, category: @category, presentation: @presentation } %>
-      </div>
-      <%if @presentation.comments.count > 2%>
+        </br>
+        </br>
+        </br>
+      <%end%>
+      <%if current_user.try(:admin?)%>
+        <div class="pre-scrollable" id= "container_comments" style=" min-height:80%; min-width: 100%">
+          <%= render @presentation.comments.where(ancestry: nil), locals: { congress: @congress, category: @category, presentation: @presentation } %>
+        </div>
+      <%else%>
+        <div class="pre-scrollable" id= "container_comments" style=" min-height:80%; min-width: 100%">
+          <%= render @presentation.comments.where(ancestry: nil).where(is_inappropriate: false), locals: { congress: @congress, category: @category, presentation: @presentation } %>
+        </div>
+      <%end%>
+      <%if @presentation.comments.count > 2 and current_user != nil %>
+        </br>
+        </br>
+        </br>
         <%= link_to "Comentar",
               new_comment_congress_category_presentation_comment_path(
               @congress, @category, @presentation,
-              parent_id: nil), :class => "btn btn-default btn-lg pull-right", :remote => true, "data-toggle" => "modal", "data-target" => "#mynewcomment", :parent_id => nil %>
+              parent_id: nil), :class => "btn btn-default pull-right", :remote => true, "data-toggle" => "modal", "data-target" => "#mynewcomment", :parent_id => nil %>
        <%end%> 
     </div>
   </div>
