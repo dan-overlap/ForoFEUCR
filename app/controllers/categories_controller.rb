@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
 
   def set_colors
-    @colors = ["#e37222","#07889b","#66b9bf","#eeaa7b"]
+    @colors = ["#6dabbe","#e6bc36","#003f66","#cb6e0e"]
   end
 
   def set_congress
@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
     @category.congress = @congress
     respond_to do |format|
       if @category.save
-        format.html { redirect_to [@category.congress, @category], notice: 'Category was successfully created.' }
+        format.html { redirect_to [@category.congress, @category], notice: 'Categoría creada con éxito.' }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
@@ -52,7 +52,7 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to [@category.congress, @category], notice: 'Category was successfully updated.' }
+        format.html { redirect_to [@category.congress, @category], notice: 'Categoría actualizada con éxito.' }
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit }

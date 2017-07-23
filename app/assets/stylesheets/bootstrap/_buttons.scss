@@ -88,6 +88,18 @@ a.btn {
   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
 
+@font-face {
+    font-family: 'Myriad';
+    src: font-url('Myriad.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  font-family: 'Myriad';
+  font-size: 100%
+}
+
 .important {
     border-radius: 15px 50px;
     background: rgba(212, 175, 55, 0.3);
