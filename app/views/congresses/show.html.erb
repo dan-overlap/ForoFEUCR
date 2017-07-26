@@ -10,18 +10,18 @@
 <div class="container">
 
   <div class="col-6 col-md-4">
-    <button data-toggle="collapse" data-target="#about" class= "btn btn-info btn-lg btn-block"><i class="glyphicon glyphicon-blackboard"></i> Acerca del congreso</button>
+    <button data-toggle="collapse" data-target="#about" class= "btn btn-default btn-lg btn-block" style="color: white; background-color: rgba(0,63,102,0.4)"><i class="glyphicon glyphicon-blackboard" ></i> Acerca del congreso</button>
   </div>
 
   <div class="col-6 col-md-4">
-    <%= link_to congress_categories_path(@congress), {class: "btn btn-info btn-lg btn-block"} do %>
-    <i class="glyphicon glyphicon-list-alt"></i> Temas y ponencias del Congreso
+    <%= link_to congress_categories_path(@congress), {class: "btn btn-default btn-lg btn-block", style: "color: white; background-color: rgba(0,63,102,0.6)"} do %>
+    <i class="glyphicon glyphicon-list-alt" s></i> Temas y ponencias del Congreso
     <% end %>
   </div>
 
   <div class="col-6 col-md-4">
-    <%= link_to congress_events_path(@congress), {class: "btn btn-info btn-lg btn-block"} do %>
-    <i class="glyphicon glyphicon-calendar"></i> Eventos próximos
+    <%= link_to congress_events_path(@congress), {class: "btn btn-default btn-lg btn-block", style: "color: white; background-color: rgba(0,63,102,1)"} do %>
+    <i class="glyphicon glyphicon-calendar" ></i> Eventos próximos
     <% end %>
   </div>
 

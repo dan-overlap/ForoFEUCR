@@ -42,14 +42,20 @@
 	<% end %>
 
 	<div style='min-height: 100%'>
+		<div style="background-color: #003f66 ">
+			<img src="<%=image_url("UCR-lg.png")%>"  class="nabar-brand" style='max-height: 60px; padding: 5px; color: white; background-color: #003f66' alt="UCR" >
 
-		<nav class="navbar navbar-inverse navbar-top align-middle" style="vertical-align: middle ;background-color: #3fa7df ">
-			<div class="container-fluid" style="background-color: #3fa7df ">
-				<div class="navbar-header" style="background-color: #3fa7df ">
-					<img src=<%=@congress.logo.to_s%>  class="nabar-brand" style='max-width: 200px; max-height: 150px; padding: 5px; color: white; background-color: #3fa7df' alt=<%= @congress.name %> >
+		</div>
+		<div style="background-color: #ffffff">
+			<img src=<%=@congress.logo.to_s%>  class="nabar-brand" style='max-height: 150px; padding: 5px; color: white;  display: block; margin: auto;' alt=<%= @congress.name %> >
 
-				</div>
-				<ul class="nav navbar-nav align-middle" style="padding-top: 15px; padding-bottom: 15px" >
+		</div>
+
+		<nav class="navbar navbar-inverse navbar-top align-middle" style="vertical-align: middle ;background-color: #003f66 ">
+
+			<div class="container-fluid" style=" background-color: #003f66 ">
+				<div class="container" style=" font-size: 150%;">
+				<ul class="nav navbar-nav " style="text-align: center;" >
 					<li><%= link_to "Inicio", congress_path(@congress), style: "color: white" %></li>
 					<li><%= link_to "Ponencias", congress_categories_path(@congress), style: "color: white" %></li>
 					<li><a href=<%= congress_events_path(@congress) %>  style= "color: white">Próximos eventos</a></li>
@@ -60,7 +66,7 @@
 					<li><a href="http://feucr.ucr.ac.cr/"  style= "color: white">FEUCR</a></li>
 					<li><a href="http://www.ucr.ac.cr"  style= "color: white">UCR</a></li>
 				</ul>
-				<ul class="nav navbar-nav pull-right" style="padding-top: 15px; padding-bottom: 15px">
+				<ul class="nav navbar-nav pull-right" >
 					<% if !user_signed_in? %>
 					<li><%= link_to "Registrarse", new_user_registration_path, class: "pull-right", style: "color: white" %></li>
 					<li><%= link_to "Iniciar sesión", new_user_session_path, style: "color: white" %></li>
@@ -68,6 +74,7 @@
 					<li><%= link_to "Cerrar sesión",  destroy_user_session_path, style: "color: white", :method => :delete %></li>
 					<%end%>
 				</ul>
+			</div>
 			</div>
 		</nav>
 		
@@ -131,16 +138,16 @@
 
 </body>
 
-<div id="footer" class="footer-distributed footer" style="background-color: #3fa7df ">
+<div id="footer" class="footer-distributed footer" style="background-color: #003f66 ">
 
-	<div class="footer-right"  style= "padding-top: 25px; background-color: #3fa7df ">
+	<div class="footer-right"  style= "padding-top: 25px; background-color: #003f66 ">
 
 
 		<% if @congress.facebook_dir != nil && @congress.facebook_dir != ""%>
-		<a href=<%= "http://"+@congress.facebook_dir.to_s %> style= "background-color: #3fa7df " ><i class="fa fa-facebook-square"  style= "background-color: #3fa7df ; color: white"></i></a>
+		<a href=<%= "http://"+@congress.facebook_dir.to_s %> style= "background-color: #003f66 " ><i class="fa fa-facebook-square"  style= "background-color: #003f66 ; color: white"></i></a>
 		<%end%>
 		<% if @congress.twitter_dir != nil && @congress.twitter_dir != ""%>
-		<a href=<%= "http://"+@congress.twitter_dir.to_s %> style= "background-color: #3fa7df "><i class="fa fa-twitter"  style= "background-color: #3fa7df ; color: white"></i></a>
+		<a href=<%= "http://"+@congress.twitter_dir.to_s %> style= "background-color: #003f66 "><i class="fa fa-twitter"  style= "background-color: #003f66 ; color: white"></i></a>
 		<%end%>
 		
 
@@ -160,7 +167,7 @@
 
        </div>
 
-	<div class="footer-left" style="background-color: #3fa7df ">
+	<div class="footer-left" style="background-color: #003f66 ">
 
 		<p class="footer-links" style="padding-top: 25px">
 			<a href=<%= congress_path(@congress) %>>Inicio</a>
