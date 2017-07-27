@@ -1,17 +1,17 @@
-<div class="container">
+<div class="container" style=" color: black; background-color: rgba(255,255,255,0.2)">
   <h1>Lista de Congresos</h1>
 
-  <table class="table">
+  <table class="table" style=" color: black; background-color: rgba(255,255,255,0.2)">
     <thead>
-      <tr scope="row">
-        <th>Nombre</th>
-        <th>Organizador</th>
-        <th>Responsable</th>
-        <th>Categorias</th>
-        <th>Ponencias</th>
-        <th>Administradores</th>
-        <th>Dirección de Facebook</th>
-        <th>Dirección de Twitter</th>
+      <tr scope="row" style=" color: black">
+        <th style=" color: black">Nombre</th>
+        <th style=" color: black">Organizador</th>
+        <th style=" color: black">Responsable</th>
+        <th style=" color: black">Categorias</th>
+        <th style=" color: black">Ponencias</th>
+        <th style=" color: black">Administradores</th>
+        <th style=" color: black">Dirección de Facebook</th>
+        <th style=" color: black">Dirección de Twitter</th>
         <th colspan="1"></th>
       </tr>
     </thead>
@@ -21,24 +21,24 @@
       <!--%# @users = User.where('id=?',congress.responsible_id).references(:user)%-->
       <% @user = User.find(congress.responsible_id)%>
       
-      <tr scope="row">
-        <td><%= congress.name %></td>
-        <td><%= congress.organizer %></td>
-        <td><%= @user.username %></td>
-        <td><%= congress.categories.count %></td>
+      <tr scope="row" style=" color: black">
+        <td style=" color: black"><%= congress.name %></td>
+        <td style=" color: black"><%= congress.organizer %></td>
+        <td style=" color: black"><%= @user.username %></td>
+        <td style=" color: black"><%= congress.categories.count %></td>
         <% presentations = 0 %>
         <% if congress.categories.any? %>
         <% congress.categories.each do |category| %>
         <% presentations += category.presentations.count %>
         <% end %>
         <% end %>
-        <td><%= presentations %></td>
-        <td><%= congress.administrator_ids %></td>
-        <td><%= congress.facebook_dir %></td>
-        <td><%= congress.twitter_dir %></td>
-        <td><%= link_to 'Ir a', congress, class: 'btn btn-info' %></td>
-        <td><%= link_to 'Editar', edit_congress_path(congress), class: 'btn btn-info' %></td>
-        <td><%= link_to 'Eliminar', congress, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style=" color: black"><%= presentations %></td>
+        <td style=" color: black"><%= congress.administrator_ids %></td>
+        <td style=" color: black"> <%= congress.facebook_dir %></td>
+        <td style=" color: black"><%= congress.twitter_dir %></td>
+        <td style=" color: black"><%= link_to 'Ir a', congress, class: 'btn btn-info' %></td>
+        <td style=" color: black"><%= link_to 'Editar', edit_congress_path(congress), class: 'btn btn-info' %></td>
+        <td style=" color: black"><%= link_to 'Eliminar', congress, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       
       <% end %>

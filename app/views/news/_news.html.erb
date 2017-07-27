@@ -7,7 +7,7 @@
               <span class="glyphicon glyphicon-cog"></span>
               <span class="sr-only">Toggle Dropdown</span>
               </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" style="background-color: rgba(0,63,102,0.6)">
                <li><%= link_to edit_congress_news_path(@congress, news) do %>
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Editar</span>
                   <%end%>
@@ -42,7 +42,7 @@
             <%end%>
             <div class="clearfix"></div>
             <div class="btn-group" role="group" id="BegeniButonlari">
-              <%= button_to like_congress_news_path(@congress, news), id: "liked-btn", class: "btn btn-default", :method => :put, remote: true do %>
+              <%= button_to like_congress_news_path(@congress, news), id: "liked-btn", class: "btn btn-default", style: " background-color: rgba(0,63,102,0.8)", :method => :put, remote: true do %>
               <!-- <button type="button" class="liked-btn"><span class="glyphicon glyphicon-thumbs-up"></span></button> -->
               <div>
                 <span><i class="glyphicon glyphicon-thumbs-up"></i></span>
