@@ -23,17 +23,17 @@
         <div class="clearfix"></div>
       </div>
       <div class="panel-body">
-        <div class="media">
+        <div class="media" >
           <div class="media-top">
             <a href="#">
               <img class="d-flex align-self-center mr-3" src=<%=news.picture %>>
             </a>
             <%lines = news.content.split(/(?<=[?.!])\n*/) %>
-            <span><p class="media-right media-top "> <%=lines.first%></p</span>
+            <span ><p class="media-right media-top " style="color: black;"> <%=lines.first%></p></span>
           </div>
           <div class="media-body">
             <% if lines.length > 1%>
-              <div id="content_<%=news.id%>" class="collapse">
+              <div id="content_<%=news.id%>" class="collapse" style="color: black;">
                 <%= lines.drop(1).join %>
               </div>
               <div align="right">

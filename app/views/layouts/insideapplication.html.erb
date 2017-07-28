@@ -41,6 +41,32 @@
 
 	<% end %>
 
+	<!-- Modal -->
+<div id="aboutCEU" class="modal fade" role="dialog" style="background-color: rgba(0,63,102,0.6)">
+  <div class="modal-dialog" >
+
+    <!-- Modal content-->
+    <div class="modal-content" style="background-color: rgba(255,255,255,0.9); color: #003f66">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <% if @congress.logo != nil %>
+        	<h4 class="modal-title" style="color: #003f66">
+        		<img src=<%=@congress.logo.to_s%> style="max-height: 100px; display: block; margin: auto  "></h4>
+      	<%else%>
+      		<h4 class="modal-title" style="color: #003f66; text-align:center"><%=@congress.name%></h4>
+      	<%end%>
+      </div>
+      <div class="modal-body" >
+        <h4 style="color: #003f66 ; text-align:center"><%= @congress.description %></h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 	<div style='min-height: 100%'>
 		<div style="background-color: #003f66 ">
 			<a href="http://www.ucr.ac.cr">
@@ -70,6 +96,8 @@
 				<div class="container" style=" font-size: 120%;">
 				<ul class="nav navbar-nav " style="text-align: center;" >
 					<li><%= link_to "Inicio", congress_path(@congress), style: "color: white" %></li>
+					<li><%= link_to "¿Qué es el CEU?", "#", style: "color: white","data-toggle" => "modal", "data-target" => "#aboutCEU"  %></li>
+
 					<li><%= link_to "Ponencias", congress_categories_path(@congress), style: "color: white" %></li>
 					<li><a href=<%= congress_events_path(@congress) %>  style= "color: white">Próximos eventos</a></li>
 					<li><a href=<%= congress_downloads_path(@congress) %>  style= "color: white">Descargas</a></li>
