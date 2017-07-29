@@ -108,6 +108,14 @@ a.btn {
 
 }
 
+.tooltiptext {
+    visibility: hidden;
+}
+
+.important .tooltiptext {
+    visibility: visible;
+}
+
 .comment {
     border-radius: 15px 50px;
     background: rgba(240, 240, 245, 0.3);

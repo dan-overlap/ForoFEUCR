@@ -5,12 +5,12 @@
 <h1 class="display-1"><%=@presentation.title%></h1>
 
   <div class="row">
-    <div class="col-xs-9">
+    <div class="col-sm-8">
       
-        <iframe src=<%=@presentation.pdf_file.to_s %> style="min-width:400px;width:95%; height:1200px;" frameborder="0" ></iframe>
+        <iframe src=<%=@presentation.pdf_file.to_s %> style="min-width: 100%; height:1200px;" frameborder="0" ></iframe>
       
     </div>
-    <div class="col-xs-3  " style="background-color: rgba(0,63,102,0.4); min-width:300px;width:22%;height:1200px;" >
+    <div class="col-xs-4" style="background-color: rgba(0,63,102,0.4);  height:1200px;" >
 
 
       <h2><%="Foro de discusion"%></h2>
@@ -25,11 +25,11 @@
         </br>
       <%end%>
       <%if current_user.try(:admin?)%>
-        <div class="pre-scrollable" id= "container_comments" style=" min-height:80%; min-width: 100%">
+        <div class="pre-scrollable" id= "container_comments" style=" min-height:85%; width: 100%">
           <%= render @presentation.comments.where(ancestry: nil), locals: { congress: @congress, category: @category, presentation: @presentation } %>
         </div>
       <%else%>
-        <div class="pre-scrollable" id= "container_comments" style=" min-height:80%; min-width: 100%">
+        <div class="pre-scrollable" id= "container_comments" style=" min-height:85%; width: 100%">
           <%= render @presentation.comments.where(ancestry: nil).where(is_inappropriate: false), locals: { congress: @congress, category: @category, presentation: @presentation } %>
         </div>
       <%end%>
