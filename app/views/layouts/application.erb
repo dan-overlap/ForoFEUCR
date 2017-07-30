@@ -40,8 +40,20 @@
 
     </div>
 
-      <div class="panel panel-default" style="text-align: center; background-color: rgba(88,102,105,0.50); color: black">
+      <div class="panel panel-default" style="background-color: rgba(88,102,105,0.50); color: black">
         <%= yield %>
+        <div class="row">
+          <div class= "col-xs-4">
+            <a href="http://www.ucr.ac.cr">
+              <img src="<%=image_url("ucr.png")%>" alt="UCR" style="max-width: 100%"></a>
+          </div>
+          <div class= "col-xs-4">
+            <a href="http://feucr.ucr.ac.cr">
+              <img src="<%=image_url("feucr.png")%>" alt="FEUCR" style="max-width: 100%"></a>
+          </div>
+        </div>
+
+
       </div>
    
     
