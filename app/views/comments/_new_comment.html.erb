@@ -1,15 +1,16 @@
 <!-- Inicio de M odal-->
 
         <%= form_for([@congress, @category, @presentation, @comment], remote: true) do |f| %>
-            <div class="modal-dialog">
-              <div class="modal-content">
+
+            <div class="modal-dialog" style="background-color: #003f66; color: #003f66">
+              <div class="modal-content" style="background-color: rgba(255,255,255,0.9); color: #003f66">
 
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Post</h4>
+                  <h4 class="modal-title" id="myModalLabel" style="color: #003f66">Comentario</h4>
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body" style="color: #003f66">
                   <%= f.hidden_field :parent_id %>
                   <% if @comment.errors.any? %>
                     <div id="error_explanation">
@@ -25,12 +26,8 @@
 
                   <form>
 
-                  <div class="field">
-                    <%= "Título" %>
-                    <%= f.text_field :title, class: "form-control comment_title" %>
-                  </div>
 
-                  <div class="field">
+                  <div class="field" style="color: #003f66">
                     <%= "Comentario" %>
                     <%= f.text_area :body, class: "form-control comment_content" %>
                   </div>
