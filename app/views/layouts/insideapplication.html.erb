@@ -57,7 +57,9 @@
       	<%end%>
       </div>
       <div class="modal-body" >
-        <h4 style="color: #003f66 ; text-align:center"><%= @congress.description %></h4>
+
+      <% description = simple_format(@congress.description, style: "color:  #003f66").html_safe %>
+        <h4 style="color: #003f66"><%=description%></h4>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -98,7 +100,7 @@
 					<li><%= link_to "Inicio", congress_path(@congress), style: "color: white" %></li>
 					<li><%= link_to "¿Qué es el CEU?", "#", style: "color: white","data-toggle" => "modal", "data-target" => "#aboutCEU"  %></li>
 
-					<li><%= link_to "Ponencias", congress_categories_path(@congress), style: "color: white" %></li>
+					<li><%= link_to "Ponencias", congress_categories_path(@congress, anchor: "categories"), style: "color: white" %></li>
 					<li><a href=<%= congress_events_path(@congress) %>  style= "color: white">Próximos eventos</a></li>
 					<li><a href=<%= congress_downloads_path(@congress) %>  style= "color: white">Descargas</a></li>
 					<%if current_user.try(:admin?)%>
@@ -213,7 +215,7 @@
 		<p class="footer-links" style="padding-top: 25px">
 			<a href=<%= congress_path(@congress) %>>Inicio</a>
 			·
-			<%= link_to "Ponencias", congress_categories_path(@congress) %>
+			<%= link_to "Ponencias", congress_categories_path(@congress, anchor: "categories") %>
 			·
 			<a href=<%= congress_events_path(@congress) %>>Próximos eventos</a>
 			·
