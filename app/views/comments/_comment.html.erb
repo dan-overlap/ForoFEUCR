@@ -21,6 +21,9 @@
           <%= link_to congress_category_presentation_comment_path(@congress, @category,@presentation,comment), method: :delete, remote: true, data: { confirm: '¿Está seguro que desea eliminar este comentario?' } do%>
             <span class="pull-right glyphicon glyphicon-remove-sign" title="Eliminar comentario." style="padding-left: 5px"></span>
           <%end%>
+          <%= link_to edit_congress_category_presentation_comment_path(@congress, @category, @presentation,comment), remote: true, "data-toggle" => "modal", "data-target" => "#mynewcomment" do %>
+          <span class="pull-right glyphicon glyphicon-pencil" title="Editar comentario." style="padding-left: 5px"></span>
+          <%end%>
         <%end%>
       <%end%>
             
@@ -110,6 +113,9 @@
                         <%if current_user == User.find(comment.author_id)%>
                           <%= link_to congress_category_presentation_comment_path(@congress, @category,@presentation,reply), method: :delete, remote: true, data: { confirm: '¿Está seguro que desea eliminar este comentario?' } do%>
                             <span class="pull-right glyphicon glyphicon-remove-sign" title="Eliminar comentario." style="padding-left: 5px"></span>
+                          <%end%>
+                          <%= link_to edit_congress_category_presentation_comment_path(@congress, @category, @presentation,reply), remote: true, "data-toggle" => "modal", "data-target" => "#mynewcomment" do %>
+                            <span class="pull-right glyphicon glyphicon-pencil" title="Editar comentario." style="padding-left: 5px"></span>
                           <%end%>
                         <%end%>
                       <%end%>

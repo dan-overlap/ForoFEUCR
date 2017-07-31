@@ -80,7 +80,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update(comment_params)
         @comment.presentation = @presentation
-        format.html { redirect_to [@congress, @category, @presentation], notice: 'Comment was successfully updated.' }
+        format.html { redirect_to [@congress, @category, @presentation], notice: 'Comentario actualizado con éxito.' }
         format.json { render :show, status: :ok, location: @comment }
         format.js 
       else

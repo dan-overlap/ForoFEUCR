@@ -1,0 +1,9 @@
+$("#mynewcomment").modal('hide');
+$(".comment_title").val('');
+$(".comment_content").val('');
+<%if @comment.parent == nil%>
+	$("#comment_<%= @comment.id %>").replaceWith('<%= j render @comment, params: { id: @comment.id } %>');
+<%else%>
+	<%@parent = Comment.find(@comment.parent_id)%>
+	$("#comment_<%= @parent.id %>").replaceWith('<%= j render @parent, locals: { congress: @congress, category: @category, presentation: @presentation } %>');
+<%end%>
