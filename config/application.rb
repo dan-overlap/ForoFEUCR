@@ -10,6 +10,7 @@ module ForoFEUCR
   class Application < Rails::Application
   	config.assets.paths << "#{Rails}/vendor/assets/fonts"
   	config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.precompile += %w(*.js)
   	config.action_view.embed_authenticity_token_in_remote_forms = true
   	
     # Settings in config/environments/* take precedence over those specified here.
