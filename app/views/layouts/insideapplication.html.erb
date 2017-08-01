@@ -187,10 +187,10 @@
 
 
 		<% if @congress.facebook_dir != nil && @congress.facebook_dir != ""%>
-		<a href=<%= "http://"+@congress.facebook_dir.to_s %> style= "background-color: #003f66 " ><i class="fa fa-facebook-square"  style= "background-color: #003f66 ; color: white"></i></a>
+		<a target="_blank" href=<%= "http://"+@congress.facebook_dir.to_s %> style= "background-color: #003f66 " ><i class="fa fa-facebook-square"  style= "background-color: #003f66 ; color: white"></i></a>
 		<%end%>
 		<% if @congress.twitter_dir != nil && @congress.twitter_dir != ""%>
-		<a href=<%= "http://"+@congress.twitter_dir.to_s %> style= "background-color: #003f66 "><i class="fa fa-twitter"  style= "background-color: #003f66 ; color: white"></i></a>
+		<a target="_blank" href=<%= "http://"+@congress.twitter_dir.to_s %> style= "background-color: #003f66 "><i class="fa fa-twitter"  style= "background-color: #003f66 ; color: white"></i></a>
 		<%end%>
 		
 
