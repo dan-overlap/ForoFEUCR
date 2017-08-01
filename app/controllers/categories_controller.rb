@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
 
   def set_colors
-    @colors = ["#6dabbe","#e6bc36","#003f66","#cb6e0e"]
+    @colors = ["#8c3000","#e6bc36","#003f66","#cb6e0e"]
   end
 
   def set_congress
