@@ -71,7 +71,7 @@
 
 	<div style='min-height: 100%'>
 		<div style="background-color: #003f66 ">
-			<a href="http://www.ucr.ac.cr">
+			<a target="_blank" href="http://www.ucr.ac.cr">
 			<img src="<%=image_url("UCR-lg.png")%>"  class="nabar-brand" style='max-height: 60px; padding: 5px; color: white; background-color: #003f66' alt="UCR" ></a>
 
 				<div class="pull-right"  style= "font-size: 150%; padding-top: 10px; padding-right: 25px; background-color: #003f66 ">
@@ -106,8 +106,8 @@
 					<%if current_user.try(:admin?)%>
 						<li><a href=<%= congress_admin_path(@congress) %>  style= "color: white">Administración</a></li>
 					<%end%>
-					<li><a href="http://feucr.ucr.ac.cr/"  style= "color: white">FEUCR</a></li>
-					<li><a href="http://www.ucr.ac.cr"  style= "color: white">UCR</a></li>
+					<li><a target="_blank" href="http://feucr.ucr.ac.cr/"  style= "color: white">FEUCR</a></li>
+					<li><a target="_blank" href="http://www.ucr.ac.cr"  style= "color: white">UCR</a></li>
 				</ul>
 				<ul class="nav navbar-nav pull-right" >
 					<% if !user_signed_in? %>
@@ -225,9 +225,9 @@
 				<a href=<%= congress_admin_path(@congress) %>>Administración</a>
 				·
 			<%end%>	
-			<a href="http://feucr.ucr.ac.cr/">FEUCR</a>
+			<a target="_blank" href="http://feucr.ucr.ac.cr/">FEUCR</a>
 			·
-			<a href="http://www.ucr.ac.cr">UCR</a>
+			<a target="_blank" href="http://www.ucr.ac.cr">UCR</a>
 		</p>
 
 		<p style='color: white'><%=@congress.name%> &copy; <%= Time.current.year %></p>
