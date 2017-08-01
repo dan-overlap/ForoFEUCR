@@ -1,7 +1,7 @@
 <%  classes = (comment.is_important ? ' important ' : ' comment ') %>
 <%if current_user.try(:admin?)%>
   <% if comment.denounced_by != nil %>
-    <% classes = classes + (comment.is_inappropriate ? ' inappropiate ' : ' denounced ')%>
+    <% classes = classes + (comment.is_inappropriate ? ' inappropriate ' : ' denounced ')%>
   <%end%>
 <%end%>
 
@@ -58,7 +58,7 @@
                   <!--Denunciado por usuario-->
                   <div class= "pull-right">
                     <%= link_to toggle_inappropriate_congress_category_presentation_comment_path(@congress,@category,@presentation, comment),class: "btn btn-sm", id: "denounce-btn", :method => :put, remote: true do %>
-                        <span class="glyphicon glyphicon-ban-circle"></span><p id="denounce_<%=comment.id%>" style="padding: 5px">Ocultar comentario</p>
+                        <span class="glyphicon glyphicon-ban-circle"></span><p id="denounce_<%=comment.id%>" style="padding: 5px"><%= comment.is_inappropriate ? 'Mostrar' : 'Ocultar'%> comentario</p>
                     <% end %>
                   </div>
                   <!-- FIN Denunciado por usuario-->
@@ -93,7 +93,7 @@
                 <%if current_user.try(:admin?)%>
 
                   <% if reply.denounced_by != nil %>
-                    <% classes = classes + (reply.is_inappropriate ? ' inappropiate ' : ' denounced ')%>
+                    <% classes = classes + (reply.is_inappropriate ? ' inappropriate ' : ' denounced ')%>
                   <%end%>
                 <%end%>
 
@@ -152,7 +152,7 @@
                   <!--Denunciado por usuario-->
                   <div class= "pull-right">
                     <%= link_to toggle_inappropriate_congress_category_presentation_comment_path(@congress,@category,@presentation, reply),class: "btn btn-sm", id: "denounce-btn", :method => :put, remote: true do %>
-                        <span class="glyphicon glyphicon-ban-circle"></span><p id="denounce_<%=reply.id%>" style="padding: 5px">Ocultar comentario</p>
+                        <span class="glyphicon glyphicon-ban-circle"></span><p id="denounce_<%=reply.id%>" style="padding: 5px"><%= reply.is_inappropriate ? 'Mostrar' : 'Ocultar'%> comentario</p>
                     <% end %>
                   </div>
                   <!-- FIN Denunciado por usuario-->
