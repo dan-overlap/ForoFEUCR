@@ -99,6 +99,6 @@ class PresentationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def presentation_params
-      params.require(:presentation).permit(:title,:uploader, :abstract, :document, :status, :discussion_id, :likes_id, :dislikes_id, :pdf_file, :presenter, {:author_ids => []})
+      params.require(:presentation).permit(:title,:uploader, :abstract, :document, :status, :discussion_id, :likes_id, :dislikes_id, :pdf_file, :presenter, :position, {:author_ids => []})
     end
 end

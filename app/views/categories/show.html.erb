@@ -12,6 +12,7 @@
 <table class= "table">
   <thead>
     <tr class = "column">
+     <th>Posición</th>
      <th>Título</th>
      <th>Estado</th>
      <th>Likes</th>
@@ -21,8 +22,9 @@
  </thead>
 
  <tbody>
-  <% @category.presentations.each do |presentation| %>
+  <% @category.presentations.order("position asc").each do |presentation| %>
   <tr>
+    <td><%= presentation.position %></td>
     <td><%= presentation.title %></td>
     <td><%= presentation.status %></td>
     <td><%= presentation.likes_id %></td>

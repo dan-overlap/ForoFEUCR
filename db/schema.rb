@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720175920) do
+ActiveRecord::Schema.define(version: 20170801162847) do
 
   create_table "administrations", force: :cascade do |t|
     t.integer "congress_id"
@@ -203,6 +203,7 @@ ActiveRecord::Schema.define(version: 20170720175920) do
     t.datetime "pdf_file_updated_at"
     t.integer "category_id"
     t.string "presenter", default: "000000", null: false
+    t.integer "position", default: 0
     t.index ["authors_id"], name: "index_presentations_on_authors_id"
     t.index ["category_id"], name: "index_presentations_on_category_id"
     t.index ["discussion_id"], name: "index_presentations_on_discussion_id"
