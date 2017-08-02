@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801162847) do
+ActiveRecord::Schema.define(version: 20170802135133) do
 
   create_table "administrations", force: :cascade do |t|
     t.integer "congress_id"
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 20170801162847) do
     t.datetime "updated_at", null: false
     t.integer "congress_id"
     t.integer "user_id"
+    t.string "color", default: "#003f66"
     t.index ["congress_id"], name: "index_events_on_congress_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end

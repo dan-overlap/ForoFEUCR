@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.1/css/bootstrap-colorpicker.css" />
+
 <%= form_for [@congress, @event] do |f| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -26,6 +28,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label "Color del evento" %>
+        <%= f.text_field :color, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
         <%= f.label "Fecha de inicio" %>
         <%= f.text_field :start_date, class: "form-control" %>
       </div>
@@ -46,3 +53,9 @@
        </div>
 
  <% end %>
+
+ <script>
+    $(function() {
+        $('#event_color').colorpicker();
+    });
+</script>

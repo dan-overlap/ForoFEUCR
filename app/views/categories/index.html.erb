@@ -2,47 +2,70 @@
 
   <h1 class="display-1" id="categories">Categorías de ponencias</h1>
   <p>  Los temas a tratar en el congreso se dividen en las siguientes categorías:</p>
-</br>
+  </br>
 
-<% first_of_row = true %>
-<% cont = 0 %>
-<% Congress.find(params[:congress_id]).categories.each do |category| %>
-<% if first_of_row %>
-<p></p>
-<div class = "row text-center align-center">
-  <% end %>
-  <a href=<%=congress_category_path(params[:congress_id], category) %>>
-    <div class="square text-center align-center" style ='background-color: <%= @colors[cont] %>; color:white;'>
-      <div class="sq-content">
-        <div class="sq-table">
-          <div class="sq-table-cell">
-            <h2><%= category.name %></h2>
-          </br>
-          <p>Ponencias activas:  <%= category.presentations.count %></p>
+  <% first_of_row = true %>
+  <% cont = 0 %>
+  <% Congress.find(params[:congress_id]).categories.each do |category| %>
+    <% if first_of_row %>
+      <p></p>
+      <div class = "row text-center align-center">
+    <% end %>
+    <a href=<%=congress_category_path(params[:congress_id], category) %>>
+      <div class="square text-center align-center" style ='background-color: <%= @colors[cont] %>; color:white;'>
+        <div class="sq-content">
+          <div class="sq-table">
+            <div class="sq-table-cell">
+              <h2><%= category.name %></h2>
+              </br>
+              <p>Ponencias activas:  <%= category.presentations.count %></p>
+            </div>
+          </div>
         </div>
       </div>
+    </a>
+    <% if cont == 3 %>
+      <% cont = 0 %>
+    <% else %>
+      <% cont = cont+1 %>
+    <%end%>  
+    <% if first_of_row %>
+     <% first_of_row = false %>
+    <% else %>
+      </div>
+      <% first_of_row = true %>
+    <%end%>
+  <% end %>
+   <% if first_of_row %>
+      <p></p>
+        <div class = "row text-center align-center">
+    <% end %>
+    <a href=<%= show_all_congress_categories_path(params[:congress_id]) %>>
+      <div class="square text-center align-center" style ='background-color: <%= @colors[cont] %>; color:white;'>
+        <div class="sq-content">
+          <div class="sq-table">
+            <div class="sq-table-cell">
+              <h2>Ver todas las ponencias</h2>
+              </br>
+              <% presentations = 0%>
+              <% @congress.categories.each do |category| %>
+                <% presentations = presentations + category.presentations.count %>
+              <% end %>
+              <p>Total de Ponencias:  <%= presentations %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+    </div>
+  <div class="row">
+    <div class="col-md-3 pull-right">
+      <%if current_user.try(:admin?)%>
+        <%= link_to 'Agregar categoría', new_congress_category_path, class: "btn btn-info" %>
+      <%end%>
+      
     </div>
   </div>
-</a>
-<% if cont == 3 %>
-  <% cont = 0 %>
-<% else %>
-  <% cont = cont+1 %>
-<%end%>  
-<% if first_of_row %>
-<% first_of_row = false %>
-<% else %>
-</div>
-<% first_of_row = true %>
-<%end%>
-<% end %>
-<div class="row">
-  <div class="col-md-3 pull-right">
-    <%if current_user.try(:admin?)%>
-      <%= link_to 'Agregar categoría', new_congress_category_path, class: "btn btn-info" %>
-    <%end%>
-    
-  </div>
-</div>
 </div>
 <br>
+

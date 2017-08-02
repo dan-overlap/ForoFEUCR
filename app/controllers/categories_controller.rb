@@ -22,6 +22,10 @@ class CategoriesController < ApplicationController
   def show
   end
 
+  def show_all
+    @categories = @congress.categories
+  end
+
   # GET /categories/new
   def new
     @category = Category.new

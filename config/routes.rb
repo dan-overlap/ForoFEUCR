@@ -20,6 +20,9 @@ Rails.application.routes.draw do
         get 'setParent' => "presentations#set_parent"
       end
       end
+      collection do
+        get 'show_all' => "categories#show_all"
+      end
     end
     resources :events
     resources :downloads
