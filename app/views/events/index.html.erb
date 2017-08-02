@@ -9,9 +9,9 @@
    </h2>
   <%= calendar @date do |date| %>
     <h4><%=  date.day %></h4>
-    <%if @events_by_date[date]%>
+    <%if @events.where('? between start_date and ending_date or ? = start_date', date, date) %>
       <ul>
-        <% @events_by_date[date].each do |event|%>
+        <% @events.where('? between start_date and ending_date or ? = start_date', date, date).each do |event|%>
           <li><h4> <%= link_to event.name, congress_event_path(@congress, event) %> </h4> </li>
         <%end%>
       </ul>
