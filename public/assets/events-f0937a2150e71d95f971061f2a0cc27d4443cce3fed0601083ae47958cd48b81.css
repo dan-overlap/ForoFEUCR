@@ -1,0 +1,55 @@
+/* line 4, C:/Sites/ForoFEUCR/app/assets/stylesheets/events.scss */
+#events .calendar {
+  border-collapse: collapse;
+  width: 100%;
+}
+/* line 8, C:/Sites/ForoFEUCR/app/assets/stylesheets/events.scss */
+#events .calendar td, #events .calendar th {
+  font-family: "Lucida Grande", arial, helvetica, sans-serif;
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #999;
+}
+/* line 15, C:/Sites/ForoFEUCR/app/assets/stylesheets/events.scss */
+#events .calendar th {
+  background-color: #DDD;
+  color: #666;
+  text-align: center;
+  width: 14.28571%;
+}
+/* line 22, C:/Sites/ForoFEUCR/app/assets/stylesheets/events.scss */
+#events .calendar td {
+  background-color: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px;
+}
+/* line 30, C:/Sites/ForoFEUCR/app/assets/stylesheets/events.scss */
+#events .calendar .notmonth {
+  color: #ccc;
+}
+/* line 31, C:/Sites/ForoFEUCR/app/assets/stylesheets/events.scss */
+#events .calendar .today {
+  background-color: #D7f2ff;
+}
+
+/* line 34, C:/Sites/ForoFEUCR/app/assets/stylesheets/events.scss */
+#events #month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+/* line 40, C:/Sites/ForoFEUCR/app/assets/stylesheets/events.scss */
+#events #month a {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+
+/* line 47, C:/Sites/ForoFEUCR/app/assets/stylesheets/events.scss */
+#events ul {
+  font-size: 15px;
+  padding-left: 20px;
+}
