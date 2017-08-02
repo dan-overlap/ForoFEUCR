@@ -12,7 +12,7 @@
     <%if @events.where('? between start_date and ending_date or ? = start_date', date, date) %>
       <ul>
         <% @events.where('? between start_date and ending_date or ? = start_date', date, date).each do |event|%>
-          <li><h4> <%= link_to event.name, congress_event_path(@congress, event) %> </h4> </li>
+          <li><h4> <%= link_to event.name, congress_event_path(@congress, event), class: "btn btn-default btn-sm" %> </h4> </li>
         <%end%>
       </ul>
     <%end%>
