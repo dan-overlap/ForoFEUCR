@@ -1,5 +1,10 @@
-<p>Welcome <%= @email %>!</p>
+<% @congress = Congress.find_by(:default => true)%>
+<% if @congress != nil %>
+	<img src=<%= @congress.logo.url %> alt="Congreso Estudiantil Universitario">
+<%end%>
 
-<p>You can confirm your account email through the link below:</p>
+<p>¡Gracias por registrarte!</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>Para confirmar tu cuenta por favor visita el siguiente enlace:</p>
+
+<p><%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, confirmation_token: @token) %></p>

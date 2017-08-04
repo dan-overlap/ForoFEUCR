@@ -1,4 +1,5 @@
 en:
+    
   errors:
     messages:
       expired: "ha expirado, por favor pide una nueva"
@@ -10,6 +11,15 @@ en:
         other: "Han habido %{count} errores:"
 
   devise:
+    user:
+      attributes:
+        name: 
+          blank: 'debe incluirse'
+        email: 
+          blank: 'debe incluirse'
+          invalid: 'no es válido'
+        password: 
+          too_short: 'es muy corta (debe tener almenos 6 caracteres)'
     failure:
       already_authenticated: 'Ya iniciaste sesión.'
       unauthenticated: 'Tienes que registrarte o iniciar sesión antes de continuar.'

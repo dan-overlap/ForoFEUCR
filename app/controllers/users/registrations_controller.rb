@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :set_congress, only: [:create]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -8,6 +9,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def account_update_params
     params.require(:user).permit(:username, :user_id, :email, :password, :password_confirmation, :current_password)
+  end
+
+  def set_congress
+    @congress = Congress.find_by(:default => true)
   end
 
   # GET /resource/sign_up
