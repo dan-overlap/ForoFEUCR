@@ -30,13 +30,23 @@
   </head>
 
   <body background="<%= image_url('login.jpg') %>">
+    <% if notice %>
+    <div id="notice_wrapper", class=" pull-center alert alert-success", style="color: #3fa7df">
+      <p class="notice"><%= notice %></p>
+    </div>
+
+  <% elsif alert %>
+    <div id="notice_wrapper", style="color: #3fa7df">
+      <p class="notice" ><%= alert %></p>
+    </div>
+
+    <% end %>
 
     
 
     <div id="main-container" class="container">
     
-      <p class="notice"><%= notice %></p>
-      <p class="alert" ><%= alert %></p>
+
 
     </div>
 

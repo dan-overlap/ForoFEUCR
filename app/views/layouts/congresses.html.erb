@@ -23,13 +23,13 @@
 
 <body style="background-color: rgba(255,255,255,0.2); color: black">
   <% if notice %>
-    <div id="notice_wrapper", class=" pull-center alert alert-success">
-      <p class="notice"><%= notice %></p>
+    <div id="notice_wrapper", class=" pull-center alert alert-success", style="color: #3fa7df">
+      <p class="notice" , style="color: #3fa7df"><%= notice %></p>
     </div>
 
   <% elsif alert %>
-    <div id="notice_wrapper">
-      <p class="notice" ><%= alert %></p>
+    <div id="notice_wrapper", style="color: #3fa7df">
+      <p class="notice" , style="color: #3fa7df"><%= alert %></p>
     </div>
 
   <% end %>

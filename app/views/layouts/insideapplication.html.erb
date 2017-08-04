@@ -30,12 +30,12 @@
 
 <body style="background-color: <%=@congress.color%>">
 	<% if notice %>
-		<div id="notice_wrapper", class=" pull-center alert alert-success">
+		<div id="notice_wrapper", class=" pull-center alert alert-success", style="color: #3fa7df">
 			<p class="notice"><%= notice %></p>
 		</div>
 
 	<% elsif alert %>
-		<div id="notice_wrapper">
+		<div id="notice_wrapper", style="color: #3fa7df">
 			<p class="notice" ><%= alert %></p>
 		</div>
 
