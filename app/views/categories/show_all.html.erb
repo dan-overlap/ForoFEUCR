@@ -27,7 +27,7 @@
     <% category.presentations.order("position asc").each do |presentation| %>
     <tr>
       <td><%= presentation.position %></td>
-      <td><%= presentation.title %></td>
+      <td><h3><%= presentation.title %><h3></td>
       <td><%= presentation.status %></td>
       <td><%= link_to 'Ir a', congress_category_presentation_path(@congress, category, presentation), class: "btn btn-info" %></td>
       <%if current_user.try(:admin?)%>

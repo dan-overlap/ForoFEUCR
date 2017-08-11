@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :banners
-  devise_for :users, :controllers => {:registrations => "users/registrations"}
+  devise_for :users, :controllers => {:registrations => "users/registrations"}#,:confirmations => "users/confirmations"
   resources :congresses do
     get '/admin/' , to: 'congresses#admin'
     post :adminToggle
@@ -32,7 +32,8 @@ Rails.application.routes.draw do
         put 'like' => "news#vote"
       end
     end
-  end    
+  end
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -41,7 +42,7 @@ Rails.application.routes.draw do
 
    root :to => 'congresses#default'
 
-
+  get '/ceu' => redirect('http://ceu.ucr.ac.cr')  
   #root 'users#index'
 
 end

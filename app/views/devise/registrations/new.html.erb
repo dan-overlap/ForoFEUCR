@@ -1,14 +1,17 @@
 <div class="container">
-  <h2 style="color: white">Registrarse</h2>
+  <h1 style="color: white">Registro de usuario</h1>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
 
 
-    <div class="form">
+    <div class="form ">
+
+      <h3 class="" style="color: white">Información personal:</h3>
+
       <div class="form-group">
-        <%= f.label :email, class: "form-label"   %>
+        <p class="form-label"> Correo institucional (ejemplo@ucr.ac.cr) </p>
         <%= f.email_field :email, autofocus: true, class: "form-control"   %>
       </div>
 
@@ -23,6 +26,12 @@
         <%= f.text_field :user_id, class: "form-control"   %>
       </div>
 
+
+
+      <br>
+
+      <h3>Definición de contraseña:</h3>
+
     <div class="form-group">
       <%= f.label "Contraseña" %>
       <% if @minimum_password_length %>
@@ -36,6 +45,20 @@
       <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control"   %>
     </div>
 
+
+
+      <br>
+
+      <h3>Términos y condiciones:</h3>
+
+    <div class="inline-form-group">
+      <%= f.check_box :terms_of_service %>
+      <%= f.label "Acepto los " %>
+      <%= link_to " terminos y condiciones de uso", asset_url('terminos_de_uso.pdf'), target: "blank", style: "color: white; text-decoration: underline;"%>
+      
+    </div>
+
+      <br>
     <div class="form-group">
       <%= f.submit "Registrarse", class: "btn btn-info"%>
     </div>
