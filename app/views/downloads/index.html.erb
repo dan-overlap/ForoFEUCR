@@ -17,8 +17,7 @@
         <td><%= download.name %></td>
         <td><%= download.description %></td>
         <td><%= link_to 'Ver', congress_download_path(@congress,download), class: "btn btn-info" %></td>
-        <td><%= link_to 'Descargar', download.file.url(:original),
-    download: download.file.url(:original), class: "btn btn-info" %></td>
+        <td><%= link_to 'Descargar', download.file.url(:original), download: '',class: "btn btn-info" %></td>
         <%if current_user.try(:admin?)%>
            <td><%= link_to 'Editar', edit_congress_download_path(@congress,download), class: "btn btn-info" %></td>
            <td><%= link_to 'Eliminar', [@congress,download], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
