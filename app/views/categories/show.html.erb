@@ -16,7 +16,7 @@
     <tr class = "column">
      <th>Posición</th>
      <th>Título</th>
-     <th>Estado</th>
+     <th>Comentarios</th>
      <th colspan="3"></th>
    </tr>
  </thead>
@@ -26,7 +26,7 @@
   <tr>
     <td><%= presentation.position %></td>
     <td><%= presentation.title %></td>
-    <td><%= presentation.status %></td>
+    <td><%= presentation.comments.count %></td>
     <td><%= link_to 'Descargar', presentation.pdf_file.url(:original, false),download: '', class: "btn btn-success " %></td>
     <td><%= link_to 'Ir a', congress_category_presentation_path(@congress, @category, presentation), class: "btn btn-info" %></td>
     <%if current_user.try(:admin?)%>
