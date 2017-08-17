@@ -21,7 +21,12 @@
       </div>
 
       <div class="form-group">
-        <%= f.label "Ponente" %>
+        <%= f.label "Nombre del ponente" %>
+        <%= f.text_field :presenter_name, class: "form-control"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Carnet del ponente" %>
         <%= f.text_field :presenter, class: "form-control"  %>
       </div>
 

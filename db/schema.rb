@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803230558) do
+ActiveRecord::Schema.define(version: 20170816032024) do
 
   create_table "administrations", force: :cascade do |t|
     t.integer "congress_id"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 20170803230558) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
+    t.string "youtube_link"
     t.index ["author_id"], name: "index_news_on_author_id"
     t.index ["cached_votes_down"], name: "index_news_on_cached_votes_down"
     t.index ["cached_votes_score"], name: "index_news_on_cached_votes_score"
@@ -205,6 +206,7 @@ ActiveRecord::Schema.define(version: 20170803230558) do
     t.integer "category_id"
     t.string "presenter", default: "000000", null: false
     t.integer "position", default: 0
+    t.string "presenter_name"
     t.index ["authors_id"], name: "index_presentations_on_authors_id"
     t.index ["category_id"], name: "index_presentations_on_category_id"
     t.index ["discussion_id"], name: "index_presentations_on_discussion_id"

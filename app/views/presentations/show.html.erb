@@ -4,6 +4,7 @@
 
 <h1><%=@presentation.title%></h1>
 <%= link_to 'Descargar ponencia', @presentation.pdf_file.url(:original, false),download: '', class: "btn btn-success btn-lg" %>
+<%= link_to 'Volver', congress_category_path(@congress,@category), class: "btn btn-default pull-right"  %>
 
   <div class="row">
     <div class="col-sm-8">

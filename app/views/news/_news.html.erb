@@ -25,9 +25,16 @@
       <div class="panel-body">
         <div class="media" >
           <div class="media-top">
-            <a href="#">
-              <img class="d-flex align-self-center mr-3" src=<%=news.picture %>>
-            </a>
+            <% ind = news.youtube_link.try(:index,'=')  %>
+            <% if news.youtube_link != nil and news.youtube_link.include? "youtube.com" and ind != nil %>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= news.youtube_link[ind+1.. -1] %>"></iframe>
+              </div>
+            <%else%>
+              
+                <img class="d-flex align-self-center mr-3" src=<%=news.picture %>>
+              
+            <%end%>
             <%lines = news.content.split(/(?<=[?.!])\n*/) %>
             <span ><p class="media-right media-top " style="color: black;"> <%=lines.first%></p></span>
           </div>
