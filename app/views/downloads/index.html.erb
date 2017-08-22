@@ -5,6 +5,7 @@
 <table class="table table-striped" >
   <thead>
     <tr class="column">
+      <th>Posición</th>
       <th>Nombre</th>
       <th>Descripción</th>
       <th colspan="3"></th>
@@ -12,8 +13,9 @@
   </thead>
 
   <tbody>
-    <% @downloads.each do |download| %>
+    <% @downloads.order("position asc").each do |download| %>
       <tr>
+      <td><%= download.position %></td>
         <td><%= download.name %></td>
         <td><%= download.description %></td>
         <td><%= link_to 'Ver', congress_download_path(@congress,download), class: "btn btn-info" %></td>

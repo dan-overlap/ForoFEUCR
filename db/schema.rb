@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816032024) do
+ActiveRecord::Schema.define(version: 20170822205744) do
 
   create_table "administrations", force: :cascade do |t|
     t.integer "congress_id"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20170816032024) do
     t.integer "file_file_size"
     t.datetime "file_updated_at"
     t.integer "congress_id"
+    t.integer "position", default: 0
     t.index ["congress_id"], name: "index_downloads_on_congress_id"
   end
 
